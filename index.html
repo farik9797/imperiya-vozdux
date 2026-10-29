@@ -6,6 +6,7 @@
 <title>Империя Воздуха — вентиляция и кондиционирование под ключ в Караганде</title>
 <meta name="description" content="Поставка оборудования, монтаж, пусконаладка и сервис систем вентиляции, кондиционирования и VRF/VRV для коммерческих и промышленных объектов. Караганда, Темиртау.">
 <link rel="icon" href="assets/logo.png">
+<link rel="preload" as="image" href="assets/hero-poster.webp" fetchpriority="high">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap">
@@ -170,7 +171,10 @@ tailwind.config = {
 <!-- ============ HERO ============ -->
 <section id="top" class="hero relative bg-ink text-white overflow-hidden flex flex-col">
   <div class="absolute inset-0" aria-hidden="true">
-    <img src="assets/zhuldyz.jpg" alt="" class="hero-img absolute inset-0 w-full h-full object-cover object-[70%_center] will-change-transform" fetchpriority="high">
+    <video id="hero-video" class="hero-img absolute inset-0 w-full h-full object-cover will-change-transform" muted loop playsinline preload="none" poster="assets/hero-poster.webp">
+      <source src="assets/hero-720.mp4" type="video/mp4" media="(max-width: 767px)">
+      <source src="assets/hero.mp4" type="video/mp4">
+    </video>
     <div class="hero-shade absolute inset-0"></div>
   </div>
 
@@ -194,8 +198,7 @@ tailwind.config = {
         <div class="pr-4 sm:pl-5 sm:border-l sm:border-white/10"><dt class="text-xl lg:text-2xl font-extrabold whitespace-nowrap"><span data-count="12">12</span> мес.</dt><dd class="m-0 text-sm leading-snug text-[#AEB3BA] mt-1">гарантия на оборудование</dd></div>
         <div class="pl-5 border-l border-white/10"><dt class="text-xl lg:text-2xl font-extrabold whitespace-nowrap"><span data-count="20">20</span>+</dt><dd class="m-0 text-sm leading-snug text-[#AEB3BA] mt-1">объектов в портфолио</dd></div>
       </dl>
-      <div class="flex items-center justify-between lg:justify-end gap-6 lg:pl-10 lg:border-l lg:border-white/10">
-        <p class="m-0 text-sm leading-snug text-[#C9CDD2]"><span class="text-leaf font-bold">Объект на фото:</span> ресторан «Жулдыз»,<br>ГК «Космонавт», Караганда</p>
+      <div class="hidden lg:flex items-center justify-end lg:pl-10 lg:border-l lg:border-white/10">
         <a href="#next" aria-label="Листать вниз" class="scroll-cue shrink-0 w-11 h-11 rounded-full border border-white/25 hover:border-leaf inline-flex items-center justify-center text-white transition-colors"><i data-lucide="arrow-down" class="ico-sm"></i></a>
       </div>
     </div>
@@ -816,6 +819,20 @@ tailwind.config = {
     paintFilters();
   }));
   paintFilters();
+
+  // Видео в hero: не грузим при «уменьшить движение» и экономии трафика — показываем картинку
+  const heroVideo = document.getElementById('hero-video');
+  const calm = matchMedia('(prefers-reduced-motion: reduce)').matches || navigator.connection?.saveData;
+  if (calm) {
+    heroVideo.poster = 'assets/hero-still.webp';
+  } else {
+    heroVideo.preload = 'auto';
+    heroVideo.load();
+    const play = () => heroVideo.play().catch(() => {});
+    play();
+    // Пауза, когда hero вне экрана
+    new IntersectionObserver(([e]) => e.isIntersecting ? play() : heroVideo.pause()).observe(document.getElementById('top'));
+  }
 
   // Шапка: фон с размытием после начала прокрутки
   const header = document.getElementById('site-header');
