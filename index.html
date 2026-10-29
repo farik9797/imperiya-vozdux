@@ -118,6 +118,8 @@ tailwind.config = {
   }
 
   .svc-title { font-size: clamp(24px, 2.3vw, 32px); }
+  /* Слайдер «Сложные системы»: от верха заголовка до низа кнопки */
+  @media (min-width: 1024px) { .sys-media { padding-top: 38px; } }
 
   /* Премиальные детали */
   .eyebrow { display: flex; align-items: center; gap: 10px; }
@@ -356,7 +358,7 @@ tailwind.config = {
 
 <!-- ============ СЛОЖНЫЕ СИСТЕМЫ ============ -->
 <section class="on-dark bg-ink glow-r text-white py-20 lg:py-24">
-  <div class="wrap grid lg:grid-cols-2 gap-12 lg:gap-14 items-center">
+  <div class="wrap grid lg:grid-cols-2 gap-12 lg:gap-14 lg:items-stretch">
     <div>
       <div data-reveal class="eyebrow">Специализация</div>
       <h2 class="h2 m-0 mb-5">Работаем с технически сложными системами</h2>
@@ -369,8 +371,8 @@ tailwind.config = {
       </div>
       <a data-reveal href="#projects" class="mt-8 inline-flex items-center gap-2 h-11 px-5 rounded-[10px] border-[1.5px] border-[#5A6068] hover:border-white font-bold text-[15px] transition-colors">Все объекты<i data-lucide="arrow-right" class="ico-sm"></i></a>
     </div>
-    <div>
-      <div id="slider" data-clip class="relative aspect-[4/3] rounded-2xl overflow-hidden bg-ink2" aria-roledescription="карусель" aria-label="Объекты компании">
+    <div class="sys-media flex flex-col">
+      <div id="slider" data-clip class="relative aspect-[4/3] lg:aspect-auto lg:flex-1 lg:min-h-[380px] rounded-2xl overflow-hidden bg-ink2" aria-roledescription="карусель" aria-label="Объекты компании">
         <figure class="slide is-active absolute inset-0 m-0" data-caption="Grand Store, Караганда — участие в реконструкции отдельных инженерных систем">
           <img src="assets/grand-store.jpg" alt="ТРЦ Grand Store, Караганда" class="w-full h-full object-cover">
         </figure>
@@ -385,9 +387,11 @@ tailwind.config = {
         </figure>
         <button type="button" data-dir="-1" aria-label="Предыдущий объект" class="absolute left-4 top-1/2 -translate-y-1/2 w-11 h-11 rounded-full bg-ink/80 hover:bg-brand text-white inline-flex items-center justify-center cursor-pointer transition-colors"><i data-lucide="chevron-left"></i></button>
         <button type="button" data-dir="1" aria-label="Следующий объект" class="absolute right-4 top-1/2 -translate-y-1/2 w-11 h-11 rounded-full bg-ink/80 hover:bg-brand text-white inline-flex items-center justify-center cursor-pointer transition-colors"><i data-lucide="chevron-right"></i></button>
-        <div class="absolute left-4 bottom-4 bg-ink/85 rounded-lg px-3 py-1.5 text-sm font-bold tabular-nums"><span id="slide-num" class="text-leaf">01</span> / <span id="slide-total">04</span></div>
+        <div class="absolute inset-x-0 bottom-0 pt-16 pb-4 px-4 sm:px-5 bg-gradient-to-t from-ink/95 via-ink/60 to-transparent flex items-end justify-between gap-4 pointer-events-none">
+          <p id="slide-caption" class="m-0 text-sm leading-snug text-[#D5D8DC] max-w-[80%]" aria-live="polite">Grand Store, Караганда — участие в реконструкции отдельных инженерных систем</p>
+          <div class="shrink-0 bg-ink/85 rounded-lg px-3 py-1.5 text-sm font-bold tabular-nums"><span id="slide-num" class="text-leaf">01</span> / <span id="slide-total">04</span></div>
+        </div>
       </div>
-      <p id="slide-caption" class="mt-3 mb-0 text-sm text-[#AEB3BA]" aria-live="polite">Grand Store, Караганда — участие в реконструкции отдельных инженерных систем</p>
     </div>
   </div>
 </section>
