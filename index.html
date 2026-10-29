@@ -1,0 +1,698 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Империя Воздуха — вентиляция и кондиционирование под ключ в Караганде</title>
+<meta name="description" content="Поставка оборудования, монтаж, пусконаладка и сервис систем вентиляции, кондиционирования и VRF/VRV для коммерческих и промышленных объектов. Караганда, Темиртау.">
+<link rel="icon" href="assets/logo.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap">
+<script src="https://cdn.tailwindcss.com/3.4.16"></script>
+<script>
+tailwind.config = {
+  theme: {
+    extend: {
+      fontFamily: { sans: ['Manrope', 'system-ui', 'sans-serif'] },
+      colors: {
+        ink: '#1E2126',
+        ink2: '#16191D',
+        edge: '#33383F',
+        body: '#2A2E34',
+        muted: '#5B6068',
+        soft: '#F4F5F6',
+        line: '#E2E4E7',
+        brand: { DEFAULT: '#4E7724', dark: '#3B5C1A' },
+        leaf: '#8CC152'
+      },
+      maxWidth: { wrap: '1240px' }
+    }
+  }
+}
+</script>
+<style>
+  html { scroll-behavior: smooth; scroll-padding-top: 76px; }
+  body { -webkit-font-smoothing: antialiased; }
+  .wrap { width: 100%; max-width: 1240px; margin: 0 auto; padding-left: 32px; padding-right: 32px; }
+  @media (max-width: 640px) { .wrap { padding-left: 16px; padding-right: 16px; } }
+  .eyebrow { font-size: 14px; font-weight: 700; color: #4E7724; margin-bottom: 14px; }
+  .on-dark .eyebrow, .eyebrow.on-dark { color: #8CC152; }
+  .h2 { font-size: clamp(28px, 3vw, 40px); line-height: 1.15; font-weight: 800; letter-spacing: -0.02em; }
+  [data-lucide] { width: 24px; height: 24px; stroke-width: 1.6; }
+  .ico-sm[data-lucide], .ico-sm svg { width: 18px; height: 18px; }
+  .field { height: 48px; width: 100%; border-radius: 10px; border: 1px solid #C9CDD2; padding: 0 14px; font: inherit; font-weight: 500; background: #fff; color: #2A2E34; }
+  .field:focus, textarea.field:focus { outline: 2px solid #4E7724; outline-offset: 1px; border-color: #4E7724; }
+  select.field { appearance: none; padding-right: 40px; cursor: pointer; }
+  textarea.field { height: auto; padding: 12px 14px; resize: vertical; }
+  details > summary { list-style: none; }
+  details > summary::-webkit-details-marker { display: none; }
+  .faq-plus svg { transition: transform .2s ease; }
+  details[open] .faq-plus svg { transform: rotate(45deg); }
+  .slide { opacity: 0; transition: opacity .5s ease; }
+  .slide.is-active { opacity: 1; }
+  @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } .slide { transition: none; } }
+</style>
+</head>
+<body class="bg-white font-sans text-body">
+
+<!-- ============ HEADER ============ -->
+<header class="sticky top-0 z-40 bg-ink border-b border-edge">
+  <div class="wrap flex items-center justify-between gap-6 h-[76px]">
+    <a href="#top" class="shrink-0" aria-label="Империя Воздуха — на главную">
+      <img src="assets/logo-white.png" alt="Империя Воздуха" class="h-10 w-auto block">
+    </a>
+    <nav class="hidden xl:flex items-center gap-7 text-[15px] font-semibold" aria-label="Основное меню">
+      <a href="#services" class="text-[#D5D8DC] hover:text-white transition-colors">Услуги</a>
+      <a href="#service" class="text-[#D5D8DC] hover:text-white transition-colors">Сервис</a>
+      <a href="#projects" class="text-[#D5D8DC] hover:text-white transition-colors">Объекты</a>
+      <a href="#equipment" class="text-[#D5D8DC] hover:text-white transition-colors">Оборудование</a>
+      <a href="#about" class="text-[#D5D8DC] hover:text-white transition-colors">О компании</a>
+      <a href="#contacts" class="text-[#D5D8DC] hover:text-white transition-colors">Контакты</a>
+    </nav>
+    <div class="flex items-center gap-3">
+      <a href="tel:+70000000000" class="hidden sm:inline-flex items-center gap-2 text-white font-bold text-[15px] whitespace-nowrap hover:text-leaf transition-colors">
+        <i data-lucide="phone" class="ico-sm text-leaf"></i>[+7 ТЕЛЕФОН]
+      </a>
+      <a href="#" aria-label="Написать в WhatsApp" class="hidden sm:inline-flex w-11 h-11 rounded-[10px] border border-[#3A3F46] items-center justify-center hover:border-leaf transition-colors">
+        <img src="https://cdn.simpleicons.org/whatsapp/8CC152" alt="" width="20" height="20">
+      </a>
+      <a href="#calc" class="hidden md:inline-flex items-center h-11 px-5 rounded-[10px] bg-brand hover:bg-brand-dark text-white font-bold text-[15px] whitespace-nowrap transition-colors">Получить расчёт</a>
+      <button id="burger" type="button" aria-label="Открыть меню" aria-expanded="false" aria-controls="mobile-nav" class="xl:hidden inline-flex w-11 h-11 rounded-[10px] border border-[#3A3F46] text-white items-center justify-center cursor-pointer">
+        <i data-lucide="menu"></i>
+      </button>
+    </div>
+  </div>
+  <nav id="mobile-nav" class="hidden xl:hidden border-t border-edge bg-ink" aria-label="Мобильное меню">
+    <div class="wrap py-4 flex flex-col text-[17px] font-semibold">
+      <a href="#services" class="py-3 text-[#D5D8DC] border-b border-edge">Услуги</a>
+      <a href="#service" class="py-3 text-[#D5D8DC] border-b border-edge">Сервис</a>
+      <a href="#projects" class="py-3 text-[#D5D8DC] border-b border-edge">Объекты</a>
+      <a href="#equipment" class="py-3 text-[#D5D8DC] border-b border-edge">Оборудование</a>
+      <a href="#about" class="py-3 text-[#D5D8DC] border-b border-edge">О компании</a>
+      <a href="#contacts" class="py-3 text-[#D5D8DC]">Контакты</a>
+      <a href="tel:+70000000000" class="mt-3 text-white font-bold">[+7 ТЕЛЕФОН]</a>
+      <a href="#calc" class="mt-4 inline-flex items-center justify-center h-12 rounded-[10px] bg-brand text-white font-bold">Получить расчёт</a>
+    </div>
+  </nav>
+</header>
+
+<main>
+
+<!-- ============ HERO ============ -->
+<section id="top" class="bg-ink text-white">
+  <div class="grid lg:grid-cols-2 lg:min-h-[640px]">
+    <div class="flex items-center">
+      <div class="w-full lg:max-w-[620px] lg:ml-auto px-4 sm:px-8 lg:pr-12 py-14 lg:py-20 flex flex-col gap-6">
+        <div class="eyebrow on-dark !mb-0">Караганда · Темиртау · с 2021 года</div>
+        <h1 class="m-0 text-[clamp(32px,3.6vw,50px)] leading-[1.1] font-extrabold tracking-[-0.02em]">Вентиляция и кондиционирование под ключ для коммерческих и промышленных объектов</h1>
+        <p class="m-0 text-[clamp(18px,1.6vw,21px)] leading-snug font-semibold text-leaf">От поставки оборудования до его стабильной работы</p>
+        <p class="m-0 text-base leading-relaxed text-[#C2C6CC] max-w-[560px]">Поставка оборудования, монтаж, пусконаладка и техническое обслуживание вентиляционных систем, кондиционеров и VRF/VRV-систем. Комплексные инженерные решения с учётом особенностей вашего объекта.</p>
+        <div class="flex flex-wrap gap-3 pt-1">
+          <a href="#calc" class="inline-flex items-center gap-2.5 h-[52px] px-6 rounded-xl bg-brand hover:bg-brand-dark text-white font-bold transition-colors">Получить расчёт стоимости<i data-lucide="arrow-right" class="ico-sm"></i></a>
+          <a href="#service" class="inline-flex items-center h-[52px] px-6 rounded-xl border-[1.5px] border-[#5A6068] hover:border-white text-white font-bold transition-colors">Заказать сервисное обслуживание</a>
+        </div>
+        <dl class="grid grid-cols-2 sm:grid-cols-4 gap-y-5 mt-6 pt-7 border-t border-edge">
+          <div class="pr-4"><dt class="text-xl font-extrabold whitespace-nowrap">с 2021</dt><dd class="text-[13px] leading-snug text-[#AEB3BA] mt-1">на рынке Казахстана</dd></div>
+          <div class="pr-4 sm:border-l sm:border-edge sm:pl-5"><dt class="text-xl font-extrabold whitespace-nowrap">2 лицензии</dt><dd class="text-[13px] leading-snug text-[#AEB3BA] mt-1">проектирование и СМР</dd></div>
+          <div class="pr-4 sm:border-l sm:border-edge sm:pl-5"><dt class="text-xl font-extrabold whitespace-nowrap">12 мес.</dt><dd class="text-[13px] leading-snug text-[#AEB3BA] mt-1">гарантия на оборудование</dd></div>
+          <div class="sm:border-l sm:border-edge sm:pl-5"><dt class="text-xl font-extrabold whitespace-nowrap">20+</dt><dd class="text-[13px] leading-snug text-[#AEB3BA] mt-1">объектов в портфолио</dd></div>
+        </dl>
+      </div>
+    </div>
+    <div class="relative min-h-[300px] sm:min-h-[420px]">
+      <img src="assets/zhuldyz.jpg" alt="Ресторан «Жулдыз», ГК «Космонавт», Караганда — объект компании" class="absolute inset-0 w-full h-full object-cover">
+      <div class="absolute inset-0 bg-gradient-to-r from-ink/40 to-transparent lg:from-ink/60 lg:via-transparent"></div>
+      <div class="absolute right-4 bottom-4 sm:right-6 sm:bottom-6 bg-ink/90 rounded-[10px] px-4 py-3 text-[13px] leading-snug text-white">
+        <span class="text-leaf font-bold">Объект:</span> ресторан «Жулдыз»,<br>ГК «Космонавт», Караганда
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ ПОЛНЫЙ ЦИКЛ ============ -->
+<section class="bg-white py-20 lg:py-24">
+  <div class="wrap">
+    <div class="grid lg:grid-cols-12 gap-6 lg:gap-10 items-end mb-12">
+      <div class="lg:col-span-7">
+        <div class="eyebrow">Комплексный инженерный подход</div>
+        <h2 class="h2 m-0 text-ink">Инженерные решения полного цикла — от подбора оборудования до стабильной работы системы</h2>
+      </div>
+      <div class="lg:col-span-5 lg:pl-8">
+        <p class="m-0 text-base leading-relaxed text-muted">Один подрядчик отвечает за все этапы. Нет нестыковок между поставщиком, монтажниками и наладчиками.</p>
+        <a href="#services" class="inline-flex items-center gap-2 mt-4 font-bold text-brand hover:text-brand-dark">Все услуги<i data-lucide="arrow-right" class="ico-sm"></i></a>
+      </div>
+    </div>
+    <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-4">
+      <article class="bg-soft rounded-2xl p-7 flex flex-col gap-3 border border-transparent hover:border-line hover:bg-white transition-colors">
+        <div class="flex items-center justify-between text-brand"><i data-lucide="truck"></i><span class="text-[13px] font-bold text-muted">01</span></div>
+        <h3 class="mt-5 mb-0 text-lg font-extrabold text-ink">Поставка оборудования</h3>
+        <p class="m-0 text-[15px] leading-relaxed text-muted">Подбор под объект, микроклимат, режим эксплуатации и бюджет заказчика.</p>
+      </article>
+      <article class="bg-soft rounded-2xl p-7 flex flex-col gap-3 border border-transparent hover:border-line hover:bg-white transition-colors">
+        <div class="flex items-center justify-between text-brand"><i data-lucide="hard-hat"></i><span class="text-[13px] font-bold text-muted">02</span></div>
+        <h3 class="mt-5 mb-0 text-lg font-extrabold text-ink">Монтаж</h3>
+        <p class="m-0 text-[15px] leading-relaxed text-muted">Штатные монтажники вентиляции, кондиционирования и VRF-систем.</p>
+      </article>
+      <article class="bg-soft rounded-2xl p-7 flex flex-col gap-3 border border-transparent hover:border-line hover:bg-white transition-colors">
+        <div class="flex items-center justify-between text-brand"><i data-lucide="sliders-horizontal"></i><span class="text-[13px] font-bold text-muted">03</span></div>
+        <h3 class="mt-5 mb-0 text-lg font-extrabold text-ink">Пусконаладка</h3>
+        <p class="m-0 text-[15px] leading-relaxed text-muted">Настройка параметров, автоматики и воздушных потоков, документация.</p>
+      </article>
+      <article class="bg-soft rounded-2xl p-7 flex flex-col gap-3 border border-transparent hover:border-line hover:bg-white transition-colors">
+        <div class="flex items-center justify-between text-brand"><i data-lucide="shield-check"></i><span class="text-[13px] font-bold text-muted">04</span></div>
+        <h3 class="mt-5 mb-0 text-lg font-extrabold text-ink">Сервисное обслуживание</h3>
+        <p class="m-0 text-[15px] leading-relaxed text-muted">Плановое ТО, диагностика и сопровождение после окончания гарантии.</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ============ СИТУАЦИИ ============ -->
+<section class="bg-soft py-20 lg:py-24">
+  <div class="wrap">
+    <div class="eyebrow">Ваш объект — ваша задача</div>
+    <h2 class="h2 m-0 mb-10 text-ink max-w-[760px]">С какой ситуацией вы обращаетесь?</h2>
+    <div class="grid md:grid-cols-3 gap-4">
+      <article class="bg-white rounded-2xl p-7 flex flex-col gap-3 border border-line hover:border-brand/40 hover:shadow-[0_12px_32px_-16px_rgba(30,33,38,.25)] transition">
+        <span class="w-12 h-12 rounded-xl bg-soft text-brand inline-flex items-center justify-center"><i data-lucide="thermometer-sun"></i></span>
+        <h3 class="mt-3 mb-0 text-lg font-extrabold text-ink">В помещении некомфортно</h3>
+        <p class="m-0 text-[15px] leading-relaxed text-muted grow">Разбираемся, почему душно, жарко или холодно, откуда появляются запахи и что мешает нормальной работе.</p>
+        <a href="#calc" class="inline-flex items-center gap-2 font-bold text-[15px] text-brand hover:text-brand-dark">Вызвать инженера<i data-lucide="arrow-right" class="ico-sm"></i></a>
+      </article>
+      <article class="bg-white rounded-2xl p-7 flex flex-col gap-3 border border-line hover:border-brand/40 hover:shadow-[0_12px_32px_-16px_rgba(30,33,38,.25)] transition">
+        <span class="w-12 h-12 rounded-xl bg-soft text-brand inline-flex items-center justify-center"><i data-lucide="building-2"></i></span>
+        <h3 class="mt-3 mb-0 text-lg font-extrabold text-ink">Открытие или реконструкция</h3>
+        <p class="m-0 text-[15px] leading-relaxed text-muted grow">Подбираем решение с учётом назначения помещений, существующих систем, бюджета и сроков заказчика.</p>
+        <a href="#calc" class="inline-flex items-center gap-2 font-bold text-[15px] text-brand hover:text-brand-dark">Получить расчёт<i data-lucide="arrow-right" class="ico-sm"></i></a>
+      </article>
+      <article class="bg-white rounded-2xl p-7 flex flex-col gap-3 border border-line hover:border-brand/40 hover:shadow-[0_12px_32px_-16px_rgba(30,33,38,.25)] transition">
+        <span class="w-12 h-12 rounded-xl bg-soft text-brand inline-flex items-center justify-center"><i data-lucide="triangle-alert"></i></span>
+        <h3 class="mt-3 mb-0 text-lg font-extrabold text-ink">Оборудование даёт сбои</h3>
+        <p class="m-0 text-[15px] leading-relaxed text-muted grow">Проводим диагностику, определяем необходимые работы и согласовываем ремонт или модернизацию.</p>
+        <a href="#service" class="inline-flex items-center gap-2 font-bold text-[15px] text-brand hover:text-brand-dark">Заказать диагностику<i data-lucide="arrow-right" class="ico-sm"></i></a>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ============ УСЛУГИ ============ -->
+<section id="services" class="bg-white py-20 lg:py-24">
+  <div class="wrap">
+    <div class="flex flex-wrap justify-between items-end gap-6 mb-10">
+      <div>
+        <div class="eyebrow">Услуги</div>
+        <h2 class="h2 m-0 text-ink">Что мы делаем</h2>
+      </div>
+      <a href="#calc" class="inline-flex items-center gap-2 font-bold text-brand hover:text-brand-dark">Рассчитать стоимость работ<i data-lucide="arrow-right" class="ico-sm"></i></a>
+    </div>
+    <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-4">
+      <article class="rounded-2xl border border-line p-6 flex flex-col gap-3 hover:border-brand/40 hover:shadow-[0_12px_32px_-16px_rgba(30,33,38,.25)] transition">
+        <i data-lucide="fan" class="text-brand"></i>
+        <h3 class="mt-2 mb-0 text-[17px] font-extrabold text-ink">Вентиляционные системы</h3>
+        <ul class="m-0 pl-4 list-disc marker:text-leaf text-sm leading-relaxed text-muted"><li>Приточные и вытяжные системы</li><li>Вентиляционные установки и воздуховоды</li><li>Водяные и электрические калориферы</li><li>Подключение автоматики</li></ul>
+      </article>
+      <article class="rounded-2xl border border-line p-6 flex flex-col gap-3 hover:border-brand/40 hover:shadow-[0_12px_32px_-16px_rgba(30,33,38,.25)] transition">
+        <i data-lucide="snowflake" class="text-brand"></i>
+        <h3 class="mt-2 mb-0 text-[17px] font-extrabold text-ink">Системы кондиционирования</h3>
+        <ul class="m-0 pl-4 list-disc marker:text-leaf text-sm leading-relaxed text-muted"><li>Сплит-, настенные системы</li><li>Канальные и кассетные кондиционеры</li><li>Фреоновые трассы и дренаж</li><li>Подключение и настройка</li></ul>
+      </article>
+      <article class="rounded-2xl border border-line p-6 flex flex-col gap-3 hover:border-brand/40 hover:shadow-[0_12px_32px_-16px_rgba(30,33,38,.25)] transition">
+        <i data-lucide="air-vent" class="text-brand"></i>
+        <h3 class="mt-2 mb-0 text-[17px] font-extrabold text-ink">VRF/VRV-системы</h3>
+        <ul class="m-0 pl-4 list-disc marker:text-leaf text-sm leading-relaxed text-muted"><li>Подбор для коммерческих зданий</li><li>Наружные и внутренние блоки, разветвители</li><li>Вакуумирование, проверка герметичности</li><li>Настройка систем управления</li></ul>
+      </article>
+      <article class="rounded-2xl border border-line p-6 flex flex-col gap-3 hover:border-brand/40 hover:shadow-[0_12px_32px_-16px_rgba(30,33,38,.25)] transition">
+        <i data-lucide="gauge" class="text-brand"></i>
+        <h3 class="mt-2 mb-0 text-[17px] font-extrabold text-ink">Пусконаладочные работы</h3>
+        <ul class="m-0 pl-4 list-disc marker:text-leaf text-sm leading-relaxed text-muted"><li>Проверка монтажа и электрики</li><li>Настройка автоматики и параметров</li><li>Балансировка воздушных потоков</li><li>Техническая документация</li></ul>
+      </article>
+      <article class="rounded-2xl border border-line p-6 flex flex-col gap-3 hover:border-brand/40 hover:shadow-[0_12px_32px_-16px_rgba(30,33,38,.25)] transition">
+        <i data-lucide="settings-2" class="text-brand"></i>
+        <h3 class="mt-2 mb-0 text-[17px] font-extrabold text-ink">Техническое обслуживание</h3>
+        <ul class="m-0 pl-4 list-disc marker:text-leaf text-sm leading-relaxed text-muted"><li>Плановое ТО вентустановок</li><li>Фильтры, теплообменники, клапаны</li><li>Двигатели, подшипники, ремни</li><li>ТО кондиционеров и VRF/VRV</li></ul>
+      </article>
+      <article class="rounded-2xl border border-line p-6 flex flex-col gap-3 hover:border-brand/40 hover:shadow-[0_12px_32px_-16px_rgba(30,33,38,.25)] transition">
+        <i data-lucide="wrench" class="text-brand"></i>
+        <h3 class="mt-2 mb-0 text-[17px] font-extrabold text-ink">Ремонт и диагностика</h3>
+        <ul class="m-0 pl-4 list-disc marker:text-leaf text-sm leading-relaxed text-muted"><li>Поиск причин отказа</li><li>Замена узлов и компонентов</li><li>Ремонт элементов автоматики</li><li>Демонтаж и модернизация</li></ul>
+      </article>
+      <article class="rounded-2xl bg-ink text-white p-6 flex flex-col gap-3">
+        <i data-lucide="package" class="text-leaf"></i>
+        <h3 class="mt-2 mb-0 text-[17px] font-extrabold">Поставка оборудования</h3>
+        <p class="m-0 text-sm leading-relaxed text-[#C2C6CC] grow">Подберём оборудование под технические требования объекта и бюджет — с монтажом или без.</p>
+        <a href="#equipment" class="inline-flex items-center gap-2 text-leaf hover:text-white font-bold text-[15px] transition-colors">Запросить подбор<i data-lucide="arrow-right" class="ico-sm"></i></a>
+      </article>
+      <article class="relative rounded-2xl overflow-hidden min-h-[260px] text-white flex">
+        <img src="assets/absolut.jpg" alt="" class="absolute inset-0 w-full h-full object-cover">
+        <div class="absolute inset-0 bg-gradient-to-t from-ink via-ink/80 to-ink/30"></div>
+        <div class="relative p-6 flex flex-col justify-end gap-4">
+          <p class="m-0 text-[17px] leading-snug font-bold">Не нашли нужную услугу? Опишите задачу — инженер подскажет решение.</p>
+          <a href="#calc" class="self-start inline-flex items-center h-11 px-5 rounded-[10px] bg-brand hover:bg-brand-dark font-bold text-[15px] transition-colors">Задать вопрос инженеру</a>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ============ СЛОЖНЫЕ СИСТЕМЫ ============ -->
+<section class="on-dark bg-ink text-white py-20 lg:py-24">
+  <div class="wrap grid lg:grid-cols-2 gap-12 lg:gap-14 items-center">
+    <div>
+      <div class="eyebrow">Специализация</div>
+      <h2 class="h2 m-0 mb-5">Работаем с технически сложными системами</h2>
+      <p class="m-0 mb-8 text-base leading-relaxed text-[#C2C6CC]">Не только бытовые кондиционеры. Мы проектируем, монтируем и настраиваем инженерные системы для объектов, где важны надёжность оборудования, корректный монтаж и соблюдение технических требований.</p>
+      <div class="grid sm:grid-cols-2 gap-3">
+        <div class="border border-[#3A3F46] rounded-xl px-5 py-4"><div class="font-extrabold">Вентиляционные установки</div><div class="text-sm text-[#AEB3BA] mt-1">приточные, вытяжные, приточно-вытяжные</div></div>
+        <div class="border border-[#3A3F46] rounded-xl px-5 py-4"><div class="font-extrabold">Водяные калориферы</div><div class="text-sm text-[#AEB3BA] mt-1">обвязка, узлы регулирования, защита</div></div>
+        <div class="border border-[#3A3F46] rounded-xl px-5 py-4"><div class="font-extrabold">Автоматика</div><div class="text-sm text-[#AEB3BA] mt-1">щиты управления, датчики, сценарии</div></div>
+        <div class="border border-[#3A3F46] rounded-xl px-5 py-4"><div class="font-extrabold">VRF/VRV-системы</div><div class="text-sm text-[#AEB3BA] mt-1">для коммерческих и административных зданий</div></div>
+      </div>
+      <a href="#projects" class="mt-8 inline-flex items-center gap-2 h-11 px-5 rounded-[10px] border-[1.5px] border-[#5A6068] hover:border-white font-bold text-[15px] transition-colors">Все объекты<i data-lucide="arrow-right" class="ico-sm"></i></a>
+    </div>
+    <div>
+      <div id="slider" class="relative aspect-[4/3] rounded-2xl overflow-hidden bg-ink2" aria-roledescription="карусель" aria-label="Объекты компании">
+        <figure class="slide is-active absolute inset-0 m-0" data-caption="Grand Store, Караганда — участие в реконструкции отдельных инженерных систем">
+          <img src="assets/grand-store.jpg" alt="ТРЦ Grand Store, Караганда" class="w-full h-full object-cover">
+        </figure>
+        <figure class="slide absolute inset-0 m-0" data-caption="Торговый дом «Абсолют», Караганда — реконструкция">
+          <img src="assets/absolut.jpg" alt="Торговый дом «Абсолют», Караганда" class="w-full h-full object-cover" loading="lazy">
+        </figure>
+        <figure class="slide absolute inset-0 m-0" data-caption="Cosmo Garden, ГК «Космонавт», Караганда — гостиничный комплекс">
+          <img src="assets/cosmo-garden.jpg" alt="Банкетный зал Cosmo Garden, ГК «Космонавт», Караганда" class="w-full h-full object-cover" loading="lazy">
+        </figure>
+        <figure class="slide absolute inset-0 m-0" data-caption="Сеть магазинов «Оптима» — 5 супермаркетов, Караганда">
+          <img src="assets/optima.jpg" alt="Супермаркет сети «Оптима», Караганда" class="w-full h-full object-cover" loading="lazy">
+        </figure>
+        <button type="button" data-dir="-1" aria-label="Предыдущий объект" class="absolute left-4 top-1/2 -translate-y-1/2 w-11 h-11 rounded-full bg-ink/80 hover:bg-brand text-white inline-flex items-center justify-center cursor-pointer transition-colors"><i data-lucide="chevron-left"></i></button>
+        <button type="button" data-dir="1" aria-label="Следующий объект" class="absolute right-4 top-1/2 -translate-y-1/2 w-11 h-11 rounded-full bg-ink/80 hover:bg-brand text-white inline-flex items-center justify-center cursor-pointer transition-colors"><i data-lucide="chevron-right"></i></button>
+        <div class="absolute left-4 bottom-4 bg-ink/85 rounded-lg px-3 py-1.5 text-[13px] font-bold tabular-nums"><span id="slide-num" class="text-leaf">01</span> / <span id="slide-total">04</span></div>
+      </div>
+      <p id="slide-caption" class="mt-3 mb-0 text-[13px] text-[#AEB3BA]" aria-live="polite">Grand Store, Караганда — участие в реконструкции отдельных инженерных систем</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============ СЕРВИС ============ -->
+<section id="service" class="bg-white py-20 lg:py-24">
+  <div class="wrap">
+    <div class="grid lg:grid-cols-12 gap-10 lg:gap-12">
+      <div class="lg:col-span-8">
+        <div class="eyebrow">Сервисное обслуживание</div>
+        <h2 class="h2 m-0 mb-5 text-ink max-w-[680px]">Ваше оборудование должно работать. Наша задача — поддержать его работоспособность</h2>
+        <p class="m-0 mb-7 text-base leading-relaxed text-muted max-w-[620px]">Сопровождаем системы на протяжении всей эксплуатации — в том числе после окончания гарантии и если монтаж выполняли не мы.</p>
+        <ul class="m-0 p-0 list-none grid sm:grid-cols-2 gap-x-8 gap-y-3 text-[15px] text-body">
+          <li class="flex gap-3 items-start"><i data-lucide="check" class="ico-sm text-brand mt-0.5 shrink-0"></i>Регулярное техническое обслуживание</li>
+          <li class="flex gap-3 items-start"><i data-lucide="check" class="ico-sm text-brand mt-0.5 shrink-0"></i>Диагностика и устранение неисправностей</li>
+          <li class="flex gap-3 items-start"><i data-lucide="check" class="ico-sm text-brand mt-0.5 shrink-0"></i>Настройка оборудования и автоматики</li>
+          <li class="flex gap-3 items-start"><i data-lucide="check" class="ico-sm text-brand mt-0.5 shrink-0"></i>Подготовка к сезону и модернизация</li>
+          <li class="flex gap-3 items-start"><i data-lucide="check" class="ico-sm text-brand mt-0.5 shrink-0"></i>Дефектные ведомости и рекомендации</li>
+          <li class="flex gap-3 items-start"><i data-lucide="check" class="ico-sm text-brand mt-0.5 shrink-0"></i>ТО вентустановок, кондиционеров, VRF</li>
+        </ul>
+      </div>
+      <div class="lg:col-span-4 flex flex-col gap-4">
+        <div class="bg-ink text-white rounded-2xl p-7 flex flex-col gap-3">
+          <span class="w-11 h-11 rounded-xl bg-brand inline-flex items-center justify-center"><i data-lucide="clipboard-check"></i></span>
+          <div class="text-[13px] font-bold text-leaf mt-2">Рекомендуем</div>
+          <h3 class="m-0 text-xl font-extrabold">Договор на регулярный сервис</h3>
+          <p class="m-0 text-sm leading-relaxed text-[#C2C6CC]">Плановое ТО по регламенту производителя. Расходы на обслуживание предсказуемы, неисправности выявляются на ранней стадии.</p>
+          <a href="#calc" class="mt-2 inline-flex items-center justify-center gap-2 min-h-12 py-3 px-4 text-center leading-snug rounded-[10px] bg-brand hover:bg-brand-dark font-bold text-[15px] transition-colors">Заказать сервисное обслуживание<i data-lucide="arrow-right" class="ico-sm"></i></a>
+        </div>
+        <div class="border border-line rounded-2xl p-6 flex flex-col gap-2">
+          <h3 class="m-0 text-lg font-extrabold text-ink">Разовое обслуживание</h3>
+          <p class="m-0 text-sm leading-relaxed text-muted">Диагностика, ремонт, чистка или подготовка к сезону по вашей заявке. Состав работ и стоимость согласуем до начала.</p>
+          <a href="#calc" class="mt-1 inline-flex items-center gap-2 font-bold text-[15px] text-brand hover:text-brand-dark">Оставить заявку<i data-lucide="arrow-right" class="ico-sm"></i></a>
+        </div>
+      </div>
+    </div>
+
+    <div class="mt-16 pt-12 border-t border-line">
+      <div class="eyebrow">Как мы работаем</div>
+      <h3 class="m-0 mb-10 text-2xl font-extrabold tracking-[-0.01em] text-ink">Понятный порядок работ от заявки до сервиса</h3>
+      <ol class="m-0 p-0 list-none grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-x-6 gap-y-8">
+        <li class="relative">
+          <div class="flex items-center gap-3 text-brand"><i data-lucide="phone-call"></i><span class="text-[13px] font-bold text-muted tabular-nums">01</span></div>
+          <div class="mt-4 font-extrabold text-ink">Заявка</div>
+          <div class="mt-1.5 text-sm leading-snug text-muted">Выясняем, что беспокоит и какой результат нужен</div>
+          <i data-lucide="chevron-right" class="ico-sm hidden lg:block absolute -right-5 top-1 text-[#C9CDD2]"></i>
+        </li>
+        <li class="relative">
+          <div class="flex items-center gap-3 text-brand"><i data-lucide="map-pin"></i><span class="text-[13px] font-bold text-muted tabular-nums">02</span></div>
+          <div class="mt-4 font-extrabold text-ink">Выезд на объект</div>
+          <div class="mt-1.5 text-sm leading-snug text-muted">Изучаем помещения и существующие системы</div>
+          <i data-lucide="chevron-right" class="ico-sm hidden lg:block absolute -right-5 top-1 text-[#C9CDD2]"></i>
+        </li>
+        <li class="relative">
+          <div class="flex items-center gap-3 text-brand"><i data-lucide="calculator"></i><span class="text-[13px] font-bold text-muted tabular-nums">03</span></div>
+          <div class="mt-4 font-extrabold text-ink">Решение и смета</div>
+          <div class="mt-1.5 text-sm leading-snug text-muted">Согласуем оборудование, состав работ и стоимость</div>
+          <i data-lucide="chevron-right" class="ico-sm hidden lg:block absolute -right-5 top-1 text-[#C9CDD2]"></i>
+        </li>
+        <li class="relative">
+          <div class="flex items-center gap-3 text-brand"><i data-lucide="truck"></i><span class="text-[13px] font-bold text-muted tabular-nums">04</span></div>
+          <div class="mt-4 font-extrabold text-ink">Поставка и монтаж</div>
+          <div class="mt-1.5 text-sm leading-snug text-muted">Своими бригадами, по согласованному графику</div>
+          <i data-lucide="chevron-right" class="ico-sm hidden lg:block absolute -right-5 top-1 text-[#C9CDD2]"></i>
+        </li>
+        <li class="relative">
+          <div class="flex items-center gap-3 text-brand"><i data-lucide="sliders-horizontal"></i><span class="text-[13px] font-bold text-muted tabular-nums">05</span></div>
+          <div class="mt-4 font-extrabold text-ink">Пусконаладка</div>
+          <div class="mt-1.5 text-sm leading-snug text-muted">Настройка, проверка режимов, документация</div>
+          <i data-lucide="chevron-right" class="ico-sm hidden lg:block absolute -right-5 top-1 text-[#C9CDD2]"></i>
+        </li>
+        <li class="relative">
+          <div class="flex items-center gap-3 text-brand"><i data-lucide="wrench"></i><span class="text-[13px] font-bold text-muted tabular-nums">06</span></div>
+          <div class="mt-4 font-extrabold text-ink">Сервис</div>
+          <div class="mt-1.5 text-sm leading-snug text-muted">ТО и сопровождение после гарантии</div>
+        </li>
+      </ol>
+    </div>
+  </div>
+</section>
+
+<!-- ============ ОБЪЕКТЫ ============ -->
+<section id="projects" class="bg-soft py-20 lg:py-24">
+  <div class="wrap">
+    <div class="flex flex-wrap justify-between items-end gap-6 mb-8">
+      <div>
+        <div class="eyebrow">Реализованные объекты</div>
+        <h2 class="h2 m-0 text-ink">Рестораны, ТЦ, фитнес, спа и производство</h2>
+      </div>
+      <p class="m-0 max-w-[380px] text-base leading-relaxed text-muted">Объекты в Караганде, Темиртау, Балхаше и Астане — от квартир до торговых домов.</p>
+    </div>
+
+    <div id="filters" class="flex flex-wrap gap-2 mb-8" role="group" aria-label="Фильтр объектов">
+      <button type="button" data-filter="all" aria-pressed="true" class="px-4 py-2 rounded-full text-sm font-semibold border cursor-pointer transition-colors">Все объекты</button>
+      <button type="button" data-filter="rest" aria-pressed="false" class="px-4 py-2 rounded-full text-sm font-semibold border cursor-pointer transition-colors">Рестораны и гостиницы</button>
+      <button type="button" data-filter="retail" aria-pressed="false" class="px-4 py-2 rounded-full text-sm font-semibold border cursor-pointer transition-colors">Торговля и ритейл</button>
+      <button type="button" data-filter="leisure" aria-pressed="false" class="px-4 py-2 rounded-full text-sm font-semibold border cursor-pointer transition-colors">Фитнес, спа и досуг</button>
+    </div>
+
+    <div id="projects-grid" class="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
+      <article data-cat="rest" class="group bg-white rounded-2xl overflow-hidden border border-line">
+        <div class="h-56 overflow-hidden"><img src="assets/cosmo-garden.jpg" alt="Банкетный зал Cosmo Garden, ГК «Космонавт», Караганда" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" loading="lazy"></div>
+        <div class="px-5 py-4"><div class="font-extrabold text-ink">Cosmo Garden, ГК «Космонавт»</div><div class="text-[13px] text-muted mt-1">Гостиничный комплекс · Караганда</div></div>
+      </article>
+      <article data-cat="rest" class="group bg-white rounded-2xl overflow-hidden border border-line">
+        <div class="h-56 overflow-hidden"><img src="assets/zhuldyz.jpg" alt="Ресторан «Жулдыз», ГК «Космонавт», Караганда" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" loading="lazy"></div>
+        <div class="px-5 py-4"><div class="font-extrabold text-ink">Ресторан «Жулдыз»</div><div class="text-[13px] text-muted mt-1">ГК «Космонавт» · Караганда</div></div>
+      </article>
+      <article data-cat="rest" class="group bg-white rounded-2xl overflow-hidden border border-line">
+        <div class="h-56 overflow-hidden"><img src="assets/arista.jpg" alt="Интерьер лаунж-бара «Ариста», Караганда" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" loading="lazy"></div>
+        <div class="px-5 py-4"><div class="font-extrabold text-ink">«Ариста»</div><div class="text-[13px] text-muted mt-1">Лаунж-бар · Караганда</div></div>
+      </article>
+      <article data-cat="retail" class="group bg-white rounded-2xl overflow-hidden border border-line">
+        <div class="h-56 overflow-hidden"><img src="assets/absolut.jpg" alt="Торговый дом «Абсолют», Караганда" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" loading="lazy"></div>
+        <div class="px-5 py-4"><div class="font-extrabold text-ink">Торговый дом «Абсолют»</div><div class="text-[13px] text-muted mt-1">Реконструкция · Караганда</div></div>
+      </article>
+      <article data-cat="retail" class="group bg-white rounded-2xl overflow-hidden border border-line">
+        <div class="h-56 overflow-hidden"><img src="assets/grand-store.jpg" alt="ТРЦ Grand Store, Караганда" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" loading="lazy"></div>
+        <div class="px-5 py-4"><div class="font-extrabold text-ink">Grand Store</div><div class="text-[13px] text-muted mt-1">Реконструкция отдельных систем · Караганда</div></div>
+      </article>
+      <article data-cat="retail" class="group bg-white rounded-2xl overflow-hidden border border-line">
+        <div class="h-56 overflow-hidden"><img src="assets/optima.jpg" alt="Супермаркет сети «Оптима», Караганда" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" loading="lazy"></div>
+        <div class="px-5 py-4"><div class="font-extrabold text-ink">Сеть магазинов «Оптима»</div><div class="text-[13px] text-muted mt-1">5 супермаркетов · Караганда</div></div>
+      </article>
+      <article data-cat="leisure" class="group bg-white rounded-2xl overflow-hidden border border-line">
+        <div class="h-56 overflow-hidden"><img src="assets/invictus.jpg" alt="Тренажёрный зал Invictus Fitness, Темиртау" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" loading="lazy"></div>
+        <div class="px-5 py-4"><div class="font-extrabold text-ink">Invictus Fitness</div><div class="text-[13px] text-muted mt-1">Премиальный фитнес-клуб · Темиртау</div></div>
+      </article>
+      <article data-cat="leisure" class="group bg-white rounded-2xl overflow-hidden border border-line">
+        <div class="h-56 overflow-hidden"><img src="assets/kyoto-spa.jpg" alt="Интерьер Kyoto Spa, Караганда" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" loading="lazy"></div>
+        <div class="px-5 py-4"><div class="font-extrabold text-ink">Kyoto Spa</div><div class="text-[13px] text-muted mt-1">Спа-салон · Караганда</div></div>
+      </article>
+      <article data-cat="leisure" class="group bg-white rounded-2xl overflow-hidden border border-line">
+        <div class="h-56 overflow-hidden"><img src="assets/my-kids.jpg" alt="Детский развлекательный центр My Kids, Темиртау" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" loading="lazy"></div>
+        <div class="px-5 py-4"><div class="font-extrabold text-ink">My Kids</div><div class="text-[13px] text-muted mt-1">Детский центр · Темиртау</div></div>
+      </article>
+    </div>
+
+    <div class="mt-6 px-6 py-5 rounded-2xl bg-white border border-line flex flex-wrap gap-x-6 gap-y-2 items-center text-[15px]">
+      <span class="font-extrabold text-ink">Также среди объектов:</span>
+      <span>X-Beauty</span><span>Lane и Burger Club</span><span>Pasta Lab</span><span>Супермаркет «Южный»</span><span>ТД «Абзал», ЦУМ</span><span>Дом милосердия</span><span>АЗС — Балхаш, Астана</span>
+    </div>
+  </div>
+</section>
+
+<!-- ============ ОБОРУДОВАНИЕ ============ -->
+<section id="equipment" class="bg-white py-20 lg:py-24">
+  <div class="wrap grid lg:grid-cols-12 gap-10 lg:gap-14">
+    <div class="lg:col-span-7">
+      <div class="eyebrow">Оборудование</div>
+      <h2 class="h2 m-0 mb-5 text-ink">Подбор и поставка оборудования</h2>
+      <p class="m-0 mb-7 text-base leading-relaxed text-muted">Подбираем оборудование под требования объекта и бюджет. Поставляем с монтажом под ключ или отдельно.</p>
+      <div class="flex flex-wrap gap-2 mb-9">
+        <span class="px-4 py-2.5 rounded-[10px] bg-soft text-[15px] font-semibold">Вентиляционные установки</span>
+        <span class="px-4 py-2.5 rounded-[10px] bg-soft text-[15px] font-semibold">Вентиляторы</span>
+        <span class="px-4 py-2.5 rounded-[10px] bg-soft text-[15px] font-semibold">Воздуховоды и клапаны</span>
+        <span class="px-4 py-2.5 rounded-[10px] bg-soft text-[15px] font-semibold">Калориферы</span>
+        <span class="px-4 py-2.5 rounded-[10px] bg-soft text-[15px] font-semibold">Автоматика</span>
+        <span class="px-4 py-2.5 rounded-[10px] bg-soft text-[15px] font-semibold">Сплит-системы</span>
+        <span class="px-4 py-2.5 rounded-[10px] bg-soft text-[15px] font-semibold">Канальные и кассетные</span>
+        <span class="px-4 py-2.5 rounded-[10px] bg-soft text-[15px] font-semibold">VRF/VRV</span>
+      </div>
+      <div class="text-sm font-bold text-muted mb-3">Работаем с брендами</div>
+      <div class="grid grid-cols-3 sm:grid-cols-6 gap-2.5">
+        <div class="h-16 border border-dashed border-[#C9CDD2] rounded-[10px] flex items-center justify-center text-[#6B7078] text-[13px]">[Бренд 1]</div>
+        <div class="h-16 border border-dashed border-[#C9CDD2] rounded-[10px] flex items-center justify-center text-[#6B7078] text-[13px]">[Бренд 2]</div>
+        <div class="h-16 border border-dashed border-[#C9CDD2] rounded-[10px] flex items-center justify-center text-[#6B7078] text-[13px]">[Бренд 3]</div>
+        <div class="h-16 border border-dashed border-[#C9CDD2] rounded-[10px] flex items-center justify-center text-[#6B7078] text-[13px]">[Бренд 4]</div>
+        <div class="h-16 border border-dashed border-[#C9CDD2] rounded-[10px] flex items-center justify-center text-[#6B7078] text-[13px]">[Бренд 5]</div>
+        <div class="h-16 border border-dashed border-[#C9CDD2] rounded-[10px] flex items-center justify-center text-[#6B7078] text-[13px]">[Бренд 6]</div>
+      </div>
+    </div>
+    <form class="js-form lg:col-span-5 self-start bg-soft rounded-2xl p-7 sm:p-8 flex flex-col gap-4" action="#" method="post">
+      <h3 class="m-0 text-xl font-extrabold text-ink">Запрос на подбор оборудования</h3>
+      <p class="m-0 text-[15px] leading-normal text-muted">Инженер подготовит варианты под ваш объект.</p>
+      <label class="flex flex-col gap-1.5 text-sm font-bold">Тип оборудования
+        <span class="relative"><select class="field"><option>Вентиляционная установка</option><option>Кондиционеры</option><option>VRF/VRV-система</option><option>Другое</option></select><i data-lucide="chevron-down" class="ico-sm absolute right-3 top-1/2 -translate-y-1/2 pointer-events-none text-muted"></i></span>
+      </label>
+      <label class="flex flex-col gap-1.5 text-sm font-bold">Параметры объекта<input type="text" class="field" placeholder="Тип помещения, площадь, м²"></label>
+      <div class="grid sm:grid-cols-2 gap-3">
+        <label class="flex flex-col gap-1.5 text-sm font-bold">Имя<input type="text" class="field" placeholder="Как к вам обращаться" autocomplete="name"></label>
+        <label class="flex flex-col gap-1.5 text-sm font-bold">Телефон<input type="tel" class="field" placeholder="+7 (___) ___-__-__" autocomplete="tel"></label>
+      </div>
+      <button type="submit" class="h-[52px] rounded-[10px] bg-ink hover:bg-black text-white font-bold cursor-pointer transition-colors">Запросить подбор</button>
+    </form>
+  </div>
+</section>
+
+<!-- ============ О КОМПАНИИ ============ -->
+<section id="about" class="on-dark bg-ink text-white py-20 lg:py-24">
+  <div class="wrap">
+    <div class="grid lg:grid-cols-12 gap-12 lg:gap-14">
+      <div class="lg:col-span-5">
+        <div class="eyebrow">О компании</div>
+        <h2 class="h2 m-0 mb-5">Профессиональная команда для вашей инженерной задачи</h2>
+        <p class="m-0 mb-4 text-base leading-relaxed text-[#C2C6CC]">«Империя Воздуха» работает в Караганде с 16 июля 2021 года. Проектируем инженерные системы, поставляем оборудование, выполняем монтаж и настройку — и продолжаем сопровождение в период эксплуатации и после окончания гарантии.</p>
+        <p class="m-0 text-base leading-relaxed text-[#C2C6CC]">В структуре компании — участок монтажа вентиляции, участок монтажа кондиционирования и VRF/VRV-систем и сервисный отдел.</p>
+        <a href="#calc" class="mt-8 inline-flex items-center gap-2 h-12 px-6 rounded-[10px] bg-brand hover:bg-brand-dark font-bold transition-colors">Получить расчёт<i data-lucide="arrow-right" class="ico-sm"></i></a>
+      </div>
+      <div class="lg:col-span-7 grid sm:grid-cols-2 gap-x-8 gap-y-8">
+        <div class="flex gap-4"><span class="w-11 h-11 shrink-0 rounded-xl border border-[#3A3F46] text-leaf inline-flex items-center justify-center"><i data-lucide="users"></i></span><div><h3 class="m-0 mb-1.5 font-extrabold">Собственная штатная команда</h3><p class="m-0 text-sm leading-relaxed text-[#AEB3BA]">Монтажники вентиляции и кондиционирования, специалисты по пусконаладке — без случайных субподрядчиков.</p></div></div>
+        <div class="flex gap-4"><span class="w-11 h-11 shrink-0 rounded-xl border border-[#3A3F46] text-leaf inline-flex items-center justify-center"><i data-lucide="handshake"></i></span><div><h3 class="m-0 mb-1.5 font-extrabold">Единая ответственность</h3><p class="m-0 text-sm leading-relaxed text-[#AEB3BA]">Поставка, монтаж, пусконаладка и сервис — у одного подрядчика, без нестыковок между этапами.</p></div></div>
+        <div class="flex gap-4"><span class="w-11 h-11 shrink-0 rounded-xl border border-[#3A3F46] text-leaf inline-flex items-center justify-center"><i data-lucide="cpu"></i></span><div><h3 class="m-0 mb-1.5 font-extrabold">Инженерный подход</h3><p class="m-0 text-sm leading-relaxed text-[#AEB3BA]">Понимаем принципы работы вентустановок, кондиционирования и VRF — решаем задачу, а не просто ставим оборудование.</p></div></div>
+        <div class="flex gap-4"><span class="w-11 h-11 shrink-0 rounded-xl border border-[#3A3F46] text-leaf inline-flex items-center justify-center"><i data-lucide="search"></i></span><div><h3 class="m-0 mb-1.5 font-extrabold">Индивидуальный подбор</h3><p class="m-0 text-sm leading-relaxed text-[#AEB3BA]">Учитываем микроклимат, режим эксплуатации, технические ограничения и бюджет.</p></div></div>
+        <div class="flex gap-4"><span class="w-11 h-11 shrink-0 rounded-xl border border-[#3A3F46] text-leaf inline-flex items-center justify-center"><i data-lucide="gauge"></i></span><div><h3 class="m-0 mb-1.5 font-extrabold">Профессиональная пусконаладка</h3><p class="m-0 text-sm leading-relaxed text-[#AEB3BA]">Проверяем оборудование, настраиваем параметры и автоматику, контролируем работу систем по ТЗ.</p></div></div>
+        <div class="flex gap-4"><span class="w-11 h-11 shrink-0 rounded-xl border border-[#3A3F46] text-leaf inline-flex items-center justify-center"><i data-lucide="file-text"></i></span><div><h3 class="m-0 mb-1.5 font-extrabold">Прозрачные условия</h3><p class="m-0 text-sm leading-relaxed text-[#AEB3BA]">Понятный состав работ. Технические решения и стоимость согласуем до начала работ.</p></div></div>
+      </div>
+    </div>
+
+    <div class="mt-14 pt-10 border-t border-edge grid md:grid-cols-3 gap-4">
+      <div class="rounded-2xl border border-[#3A3F46] p-5 flex gap-4 items-start">
+        <div class="w-20 h-24 shrink-0 rounded-lg border border-dashed border-[#5A6068] flex items-center justify-center text-center text-[11px] leading-tight text-[#AEB3BA]">[Скан<br>лицензии]</div>
+        <div><div class="font-extrabold">Лицензия на проектирование</div><div class="text-sm leading-snug text-[#AEB3BA] mt-1.5">Вентиляция и кондиционирование, отопление и теплоснабжение, автоматизация инженерных систем</div></div>
+      </div>
+      <div class="rounded-2xl border border-[#3A3F46] p-5 flex gap-4 items-start">
+        <div class="w-20 h-24 shrink-0 rounded-lg border border-dashed border-[#5A6068] flex items-center justify-center text-center text-[11px] leading-tight text-[#AEB3BA]">[Скан<br>лицензии]</div>
+        <div><div class="font-extrabold">Лицензия на СМР</div><div class="text-sm leading-snug text-[#AEB3BA] mt-1.5">Подбор и поставка оборудования, монтаж и пусконаладка, сервис, ремонт и модернизация</div></div>
+      </div>
+      <div class="rounded-2xl bg-brand p-5 flex gap-4 items-center">
+        <span class="w-12 h-12 shrink-0 rounded-xl bg-white/15 inline-flex items-center justify-center"><i data-lucide="badge-check"></i></span>
+        <div><div class="text-lg font-extrabold">Гарантия 12 месяцев</div><div class="text-sm leading-snug text-white/85 mt-1">на всё оборудование и материалы — с момента ввода в эксплуатацию</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FAQ ============ -->
+<section class="bg-white py-20 lg:py-24">
+  <div class="wrap grid lg:grid-cols-12 gap-10 lg:gap-14">
+    <div class="lg:col-span-4">
+      <div class="eyebrow">Вопросы и ответы</div>
+      <h2 class="h2 m-0 mb-4 text-ink">Частые вопросы</h2>
+      <p class="m-0 text-base leading-relaxed text-muted">Не нашли ответ? Позвоните или напишите в WhatsApp — инженер ответит на ваш вопрос.</p>
+    </div>
+    <div id="faq" class="lg:col-span-8 border-t border-line">
+      <details class="border-b border-line group" open>
+        <summary class="flex justify-between items-center gap-5 py-5 cursor-pointer text-[17px] font-bold text-ink">Сколько времени занимает монтаж?<span class="faq-plus shrink-0 w-8 h-8 rounded-lg bg-soft text-brand inline-flex items-center justify-center"><i data-lucide="plus" class="ico-sm"></i></span></summary>
+        <p class="m-0 mb-5 pr-12 text-base leading-relaxed text-muted">Зависит от объекта и типа системы. Сроки фиксируем в смете после выезда инженера и согласования решения.</p>
+      </details>
+      <details class="border-b border-line group">
+        <summary class="flex justify-between items-center gap-5 py-5 cursor-pointer text-[17px] font-bold text-ink">Выезжаете ли вы на объект для осмотра?<span class="faq-plus shrink-0 w-8 h-8 rounded-lg bg-soft text-brand inline-flex items-center justify-center"><i data-lucide="plus" class="ico-sm"></i></span></summary>
+        <p class="m-0 mb-5 pr-12 text-base leading-relaxed text-muted">Да. Инженер изучает помещения и существующие системы, после чего мы предлагаем решение и стоимость.</p>
+      </details>
+      <details class="border-b border-line group">
+        <summary class="flex justify-between items-center gap-5 py-5 cursor-pointer text-[17px] font-bold text-ink">Какая гарантия на работы и оборудование?<span class="faq-plus shrink-0 w-8 h-8 rounded-lg bg-soft text-brand inline-flex items-center justify-center"><i data-lucide="plus" class="ico-sm"></i></span></summary>
+        <p class="m-0 mb-5 pr-12 text-base leading-relaxed text-muted">Гарантия на всё поставляемое оборудование и материалы — 12 месяцев с момента ввода в эксплуатацию.</p>
+      </details>
+      <details class="border-b border-line group">
+        <summary class="flex justify-between items-center gap-5 py-5 cursor-pointer text-[17px] font-bold text-ink">Можно ли заключить договор на регулярное ТО?<span class="faq-plus shrink-0 w-8 h-8 rounded-lg bg-soft text-brand inline-flex items-center justify-center"><i data-lucide="plus" class="ico-sm"></i></span></summary>
+        <p class="m-0 mb-5 pr-12 text-base leading-relaxed text-muted">Да. Договор на техническое обслуживание позволяет планировать расходы и поддерживать оборудование в рабочем состоянии.</p>
+      </details>
+      <details class="border-b border-line group">
+        <summary class="flex justify-between items-center gap-5 py-5 cursor-pointer text-[17px] font-bold text-ink">Обслуживаете ли вы системы, которые монтировали не вы?<span class="faq-plus shrink-0 w-8 h-8 rounded-lg bg-soft text-brand inline-flex items-center justify-center"><i data-lucide="plus" class="ico-sm"></i></span></summary>
+        <p class="m-0 mb-5 pr-12 text-base leading-relaxed text-muted">Да. Проводим диагностику, определяем необходимые работы и согласовываем ремонт или модернизацию.</p>
+      </details>
+      <details class="border-b border-line group">
+        <summary class="flex justify-between items-center gap-5 py-5 cursor-pointer text-[17px] font-bold text-ink">Работаете ли вы с частными домами и квартирами?<span class="faq-plus shrink-0 w-8 h-8 rounded-lg bg-soft text-brand inline-flex items-center justify-center"><i data-lucide="plus" class="ico-sm"></i></span></summary>
+        <p class="m-0 mb-5 pr-12 text-base leading-relaxed text-muted">Да. Учитываем планировку и интерьер, назначение комнат, размещение оборудования и доступ для обслуживания.</p>
+      </details>
+    </div>
+  </div>
+</section>
+
+<!-- ============ РАСЧЁТ / КОНТАКТЫ ============ -->
+<section id="calc" class="bg-soft py-20 lg:py-24">
+  <div class="wrap grid lg:grid-cols-12 gap-10 lg:gap-12">
+    <div class="lg:col-span-5 flex flex-col">
+      <div class="eyebrow">Расчёт стоимости</div>
+      <h2 class="h2 m-0 mb-5 text-ink">Расскажите о вашем объекте — подготовим решение и смету</h2>
+      <p class="m-0 mb-8 text-base leading-relaxed text-muted">Перезвоним в рабочее время, уточним задачу и согласуем выезд инженера.</p>
+      <ul class="m-0 p-0 list-none flex flex-col gap-4 text-[15px]">
+        <li class="flex items-center gap-3"><span class="w-10 h-10 rounded-[10px] bg-white border border-line text-brand inline-flex items-center justify-center"><i data-lucide="phone" class="ico-sm"></i></span><a href="tel:+70000000000" class="text-xl font-extrabold text-ink hover:text-brand">[+7 ТЕЛЕФОН]</a></li>
+        <li class="flex items-center gap-3"><span class="w-10 h-10 rounded-[10px] bg-white border border-line text-brand inline-flex items-center justify-center"><i data-lucide="mail" class="ico-sm"></i></span><a href="mailto:info@example.kz" class="font-semibold text-brand hover:text-brand-dark">[E-MAIL]</a></li>
+        <li class="flex items-center gap-3"><span class="w-10 h-10 rounded-[10px] bg-white border border-line text-brand inline-flex items-center justify-center"><i data-lucide="map-pin" class="ico-sm"></i></span>[АДРЕС ОФИСА], Караганда</li>
+        <li class="flex items-center gap-3"><span class="w-10 h-10 rounded-[10px] bg-white border border-line text-brand inline-flex items-center justify-center"><i data-lucide="clock" class="ico-sm"></i></span>[РЕЖИМ РАБОТЫ]</li>
+      </ul>
+      <div class="relative mt-8 rounded-2xl overflow-hidden min-h-[180px] hidden lg:flex grow">
+        <img src="assets/grand-store.jpg" alt="ТРЦ Grand Store, Караганда" class="absolute inset-0 w-full h-full object-cover" loading="lazy">
+        <div class="absolute inset-0 bg-gradient-to-t from-ink/90 via-ink/30 to-transparent"></div>
+        <div class="relative mt-auto p-5 text-white text-sm font-semibold leading-snug">Гарантия 12 месяцев на оборудование и материалы</div>
+      </div>
+    </div>
+    <form class="js-form lg:col-span-7 self-start bg-white rounded-2xl p-6 sm:p-9 grid sm:grid-cols-2 gap-4 border border-line" action="#" method="post">
+      <label class="flex flex-col gap-1.5 text-sm font-bold">Имя *<input type="text" required class="field" placeholder="Как к вам обращаться" autocomplete="name"></label>
+      <label class="flex flex-col gap-1.5 text-sm font-bold">Телефон *<input type="tel" required class="field" placeholder="+7 (___) ___-__-__" autocomplete="tel"></label>
+      <label class="flex flex-col gap-1.5 text-sm font-bold">Тип объекта
+        <span class="relative"><select class="field"><option>Ресторан, кафе</option><option>Торговый центр, магазин</option><option>Офис</option><option>Производство</option><option>Фитнес, спа, салон</option><option>Квартира, частный дом</option><option>Другое</option></select><i data-lucide="chevron-down" class="ico-sm absolute right-3 top-1/2 -translate-y-1/2 pointer-events-none text-muted"></i></span>
+      </label>
+      <label class="flex flex-col gap-1.5 text-sm font-bold">Услуга
+        <span class="relative"><select class="field"><option>Монтаж вентиляции</option><option>Монтаж кондиционирования</option><option>VRF/VRV-система</option><option>Пусконаладка</option><option>Сервисное обслуживание</option><option>Ремонт и диагностика</option><option>Поставка оборудования</option></select><i data-lucide="chevron-down" class="ico-sm absolute right-3 top-1/2 -translate-y-1/2 pointer-events-none text-muted"></i></span>
+      </label>
+      <label class="sm:col-span-2 flex flex-col gap-1.5 text-sm font-bold">Площадь объекта, м²<input type="text" inputmode="numeric" class="field" placeholder="Например, 350"></label>
+      <label class="sm:col-span-2 flex flex-col gap-1.5 text-sm font-bold">Комментарий<textarea rows="3" class="field" placeholder="Опишите задачу"></textarea></label>
+      <label class="sm:col-span-2 relative inline-flex items-center gap-2.5 text-sm font-semibold text-brand hover:text-brand-dark cursor-pointer self-start">
+        <i data-lucide="paperclip" class="ico-sm"></i><span id="file-label">Прикрепить проект или ТЗ (до 10 МБ)</span>
+        <input id="file-input" type="file" class="absolute w-px h-px opacity-0">
+      </label>
+      <label class="sm:col-span-2 flex items-start gap-2.5 text-[13px] leading-normal text-muted cursor-pointer">
+        <input type="checkbox" checked required class="w-[18px] h-[18px] mt-0.5 accent-brand shrink-0">Согласен на обработку персональных данных в соответствии с политикой конфиденциальности
+      </label>
+      <button type="submit" class="sm:col-span-2 h-14 rounded-xl bg-brand hover:bg-brand-dark text-white font-bold text-[17px] cursor-pointer transition-colors inline-flex items-center justify-center gap-2">Получить расчёт стоимости<i data-lucide="arrow-right" class="ico-sm"></i></button>
+    </form>
+  </div>
+</section>
+
+</main>
+
+<!-- ============ ФУТЕР ============ -->
+<footer id="contacts" class="bg-ink2 text-[#C2C6CC] pt-16 pb-8">
+  <div class="wrap">
+    <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-10 pb-12 border-b border-edge">
+      <div>
+        <img src="assets/logo-white.png" alt="Империя Воздуха" class="h-11 w-auto block mb-5">
+        <p class="m-0 text-sm leading-relaxed">Проектирование, поставка, монтаж, пусконаладка и сервис систем вентиляции и кондиционирования.</p>
+      </div>
+      <div>
+        <div class="text-[13px] font-bold text-leaf mb-4">Разделы</div>
+        <nav class="flex flex-col gap-2.5 text-[15px]" aria-label="Разделы сайта">
+          <a href="#services" class="hover:text-white">Услуги</a>
+          <a href="#service" class="hover:text-white">Сервис</a>
+          <a href="#projects" class="hover:text-white">Объекты</a>
+          <a href="#equipment" class="hover:text-white">Оборудование</a>
+          <a href="#about" class="hover:text-white">О компании</a>
+        </nav>
+      </div>
+      <div>
+        <div class="text-[13px] font-bold text-leaf mb-4">Контакты</div>
+        <div class="flex flex-col gap-2.5 text-[15px]">
+          <a href="tel:+70000000000" class="text-white font-bold text-lg hover:text-leaf">[+7 ТЕЛЕФОН]</a>
+          <a href="mailto:info@example.kz" class="hover:text-white">[E-MAIL]</a>
+          <span>[АДРЕС ОФИСА], Караганда</span>
+          <span>[РЕЖИМ РАБОТЫ]</span>
+        </div>
+      </div>
+      <div>
+        <div class="text-[13px] font-bold text-leaf mb-4">География</div>
+        <div class="flex flex-col gap-2.5 text-[15px]"><span>Караганда</span><span>Темиртау</span><span>Карагандинская область</span></div>
+        <div class="flex gap-2.5 mt-6">
+          <a href="#" aria-label="WhatsApp" class="w-11 h-11 rounded-[10px] border border-[#3A3F46] hover:border-leaf inline-flex items-center justify-center transition-colors"><img src="https://cdn.simpleicons.org/whatsapp/8CC152" alt="" width="20" height="20"></a>
+          <a href="#" aria-label="Telegram" class="w-11 h-11 rounded-[10px] border border-[#3A3F46] hover:border-leaf inline-flex items-center justify-center transition-colors"><img src="https://cdn.simpleicons.org/telegram/8CC152" alt="" width="20" height="20"></a>
+          <a href="#" aria-label="Instagram" class="w-11 h-11 rounded-[10px] border border-[#3A3F46] hover:border-leaf inline-flex items-center justify-center transition-colors"><img src="https://cdn.simpleicons.org/instagram/8CC152" alt="" width="20" height="20"></a>
+        </div>
+      </div>
+    </div>
+    <div class="flex flex-wrap justify-between gap-3 pt-6 text-[13px] text-[#8E949C]">
+      <span>© 2026 ТОО «Империя Воздуха» · [БИН / РЕКВИЗИТЫ]</span>
+      <a href="#" class="text-[#AEB3BA] hover:text-white">Политика конфиденциальности</a>
+    </div>
+  </div>
+</footer>
+
+<script src="https://unpkg.com/lucide@0.469.0/dist/umd/lucide.min.js"></script>
+<script>
+  lucide.createIcons();
+
+  // Мобильное меню
+  const burger = document.getElementById('burger');
+  const mobileNav = document.getElementById('mobile-nav');
+  burger.addEventListener('click', () => {
+    const open = mobileNav.classList.toggle('hidden') === false;
+    burger.setAttribute('aria-expanded', String(open));
+  });
+  mobileNav.querySelectorAll('a').forEach(a => a.addEventListener('click', () => {
+    mobileNav.classList.add('hidden');
+    burger.setAttribute('aria-expanded', 'false');
+  }));
+
+  // Слайдер объектов
+  const slider = document.getElementById('slider');
+  const slides = slider.querySelectorAll('.slide');
+  const pad = n => String(n).padStart(2, '0');
+  let current = 0;
+  document.getElementById('slide-total').textContent = pad(slides.length);
+  slider.querySelectorAll('[data-dir]').forEach(btn => btn.addEventListener('click', () => {
+    slides[current].classList.remove('is-active');
+    current = (current + Number(btn.dataset.dir) + slides.length) % slides.length;
+    slides[current].classList.add('is-active');
+    document.getElementById('slide-num').textContent = pad(current + 1);
+    document.getElementById('slide-caption').textContent = slides[current].dataset.caption;
+  }));
+
+  // Фильтр объектов
+  const filterBtns = document.querySelectorAll('#filters [data-filter]');
+  const projectCards = document.querySelectorAll('#projects-grid [data-cat]');
+  const paintFilters = () => filterBtns.forEach(b => {
+    const on = b.getAttribute('aria-pressed') === 'true';
+    b.className = 'px-4 py-2 rounded-full text-sm font-semibold border cursor-pointer transition-colors ' +
+      (on ? 'bg-ink text-white border-ink' : 'bg-white text-body border-[#D5D8DC] hover:border-ink');
+  });
+  filterBtns.forEach(btn => btn.addEventListener('click', () => {
+    filterBtns.forEach(b => b.setAttribute('aria-pressed', String(b === btn)));
+    projectCards.forEach(c => c.classList.toggle('hidden', btn.dataset.filter !== 'all' && c.dataset.cat !== btn.dataset.filter));
+    paintFilters();
+  }));
+  paintFilters();
+
+  // Имя прикреплённого файла
+  document.getElementById('file-input').addEventListener('change', e => {
+    const f = e.target.files[0];
+    document.getElementById('file-label').textContent = f ? f.name : 'Прикрепить проект или ТЗ (до 10 МБ)';
+  });
+
+  // Формы — макет, отправка не подключена
+  document.querySelectorAll('.js-form').forEach(f => f.addEventListener('submit', e => e.preventDefault()));
+</script>
+</body>
+</html>
