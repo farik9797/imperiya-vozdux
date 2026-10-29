@@ -270,10 +270,14 @@ tailwind.config = {
 </section>
 
 <!-- ============ СИТУАЦИИ ============ -->
-<section class="bg-soft py-20 lg:py-24">
-  <div class="wrap">
+<section class="on-dark relative bg-ink text-white py-20 lg:py-28 overflow-hidden">
+  <div class="absolute inset-0" aria-hidden="true">
+    <img src="assets/situations-bg.webp" srcset="assets/situations-bg-900.webp 900w, assets/situations-bg.webp 1920w" sizes="100vw" alt="" class="sit-bg absolute left-0 w-full h-[120%] -top-[10%] object-cover will-change-transform" loading="lazy">
+    <div class="absolute inset-0 bg-gradient-to-b from-ink/90 via-ink/70 to-ink/90"></div>
+  </div>
+  <div class="wrap relative">
     <div data-reveal class="eyebrow">Ваш объект — ваша задача</div>
-    <h2 class="h2 m-0 mb-10 text-ink max-w-[760px]">С какой ситуацией вы обращаетесь?</h2>
+    <h2 class="h2 m-0 mb-10 text-white max-w-[760px]">С какой ситуацией вы обращаетесь?</h2>
     <div data-stagger class="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
       <article class="bg-white rounded-2xl p-7 flex flex-col gap-3 border border-line">
         <span class="w-12 h-12 rounded-xl bg-soft text-brand inline-flex items-center justify-center"><i data-lucide="thermometer-sun"></i></span>
@@ -939,6 +943,7 @@ tailwind.config = {
       });
       // Параллакс фото в hero
       gsap.to('.hero-img', { yPercent: 12, ease: 'none', scrollTrigger: { trigger: '#top', start: 'top top', end: 'bottom top', scrub: true } });
+      gsap.fromTo('.sit-bg', { yPercent: -8 }, { yPercent: 8, ease: 'none', scrollTrigger: { trigger: '.sit-bg', start: 'top bottom', end: 'bottom top', scrub: true } });
       gsap.to('.hero-content', { yPercent: -8, opacity: .2, ease: 'none', scrollTrigger: { trigger: '#top', start: 'top top', end: 'bottom top', scrub: true } });
 
       // Заголовки секций — строки выезжают из-под маски
