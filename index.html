@@ -152,7 +152,7 @@ tailwind.config = {
       <a href="tel:+77019450464" class="hidden sm:inline-flex items-center gap-2 min-h-11 text-white font-bold text-[15px] whitespace-nowrap hover:text-leaf transition-colors">
         <i data-lucide="phone" class="ico-sm text-leaf"></i>+7 701 945 04 64
       </a>
-      <a href="#" aria-label="Написать в WhatsApp" class="hidden sm:inline-flex w-11 h-11 rounded-[10px] border border-[#3A3F46] items-center justify-center hover:border-leaf transition-colors">
+      <a href="https://wa.me/77019450464" target="_blank" rel="noopener" aria-label="Написать в WhatsApp" class="hidden sm:inline-flex w-11 h-11 rounded-[10px] border border-[#3A3F46] items-center justify-center hover:border-leaf transition-colors">
         <img src="https://cdn.simpleicons.org/whatsapp/8CC152" alt="" width="20" height="20">
       </a>
       <a data-popup href="#calc" class="hidden md:inline-flex items-center h-11 px-5 rounded-[10px] bg-brand hover:bg-brand-dark text-white font-bold text-[15px] whitespace-nowrap transition-colors">Получить расчёт</a>
@@ -170,6 +170,7 @@ tailwind.config = {
       <a href="#about" class="py-3 text-[#D5D8DC] border-b border-edge">О компании</a>
       <a href="#contacts" class="py-3 text-[#D5D8DC]">Контакты</a>
       <a href="tel:+77019450464" class="mt-2 py-3 text-white font-bold">+7 701 945 04 64</a>
+      <a href="https://wa.me/77019450464" target="_blank" rel="noopener" class="py-3 inline-flex items-center gap-2.5 text-leaf font-semibold"><img src="https://cdn.simpleicons.org/whatsapp/8CC152" alt="" width="18" height="18">Написать в WhatsApp</a>
       <a data-popup href="#calc" class="mt-4 inline-flex items-center justify-center h-12 rounded-[10px] bg-brand text-white font-bold">Получить расчёт</a>
     </div>
   </nav>
@@ -647,16 +648,12 @@ tailwind.config = {
       <h2 class="h2 m-0 mb-5 text-ink">Расскажите о вашем объекте — подготовим решение и смету</h2>
       <p data-reveal class="m-0 mb-8 text-base leading-relaxed text-muted">Перезвоним в рабочее время, уточним задачу и согласуем выезд инженера.</p>
       <ul data-stagger class="m-0 p-0 list-none flex flex-col gap-4 text-[15px]">
-        <li class="flex items-center gap-3"><span class="w-10 h-10 rounded-[10px] bg-white border border-line text-brand inline-flex items-center justify-center"><i data-lucide="phone" class="ico-sm"></i></span><a href="tel:+77019450464" class="py-1.5 text-xl font-extrabold text-ink hover:text-brand">+7 701 945 04 64</a></li>
-        <li class="flex items-center gap-3"><span class="w-10 h-10 rounded-[10px] bg-white border border-line text-brand inline-flex items-center justify-center"><i data-lucide="mail" class="ico-sm"></i></span><a href="mailto:imperia-vozduha@mail.ru" class="py-2 font-semibold text-brand hover:text-brand-dark">imperia-vozduha@mail.ru</a></li>
-        <li class="flex items-center gap-3"><span class="w-10 h-10 rounded-[10px] bg-white border border-line text-brand inline-flex items-center justify-center"><i data-lucide="map-pin" class="ico-sm"></i></span>100012, г. Караганда, р-н им. Казыбек би, ул. Балқантау, д. 52, кв. 1</li>
-        <li class="flex items-center gap-3"><span class="w-10 h-10 rounded-[10px] bg-white border border-line text-brand inline-flex items-center justify-center"><i data-lucide="clock" class="ico-sm"></i></span>[РЕЖИМ РАБОТЫ]</li>
+        <li class="flex items-center gap-3"><span class="shrink-0 w-10 h-10 rounded-[10px] bg-white border border-line text-brand inline-flex items-center justify-center"><i data-lucide="phone" class="ico-sm"></i></span><a href="tel:+77019450464" class="py-1.5 text-xl font-extrabold text-ink hover:text-brand">+7 701 945 04 64</a></li>
+        <li class="flex items-center gap-3"><span class="shrink-0 w-10 h-10 rounded-[10px] bg-white border border-line inline-flex items-center justify-center"><img src="https://cdn.simpleicons.org/whatsapp/4E7724" alt="" width="18" height="18"></span><a href="https://wa.me/77019450464" target="_blank" rel="noopener" class="py-2 font-semibold text-brand hover:text-brand-dark">Написать в WhatsApp</a></li>
+        <li class="flex items-center gap-3"><span class="shrink-0 w-10 h-10 rounded-[10px] bg-white border border-line text-brand inline-flex items-center justify-center"><i data-lucide="mail" class="ico-sm"></i></span><a href="mailto:imperia-vozduha@mail.ru" class="py-2 font-semibold text-brand hover:text-brand-dark">imperia-vozduha@mail.ru</a></li>
+        <li class="flex items-center gap-3"><span class="shrink-0 w-10 h-10 rounded-[10px] bg-white border border-line text-brand inline-flex items-center justify-center"><i data-lucide="map-pin" class="ico-sm"></i></span>100012, г. Караганда, р-н им. Казыбек би, ул.&nbsp;Балқантау, д.&nbsp;52, кв.&nbsp;1</li>
+        <li class="flex items-center gap-3"><span class="shrink-0 w-10 h-10 rounded-[10px] bg-white border border-line text-brand inline-flex items-center justify-center"><i data-lucide="clock" class="ico-sm"></i></span>Режим работы: 09:00 – 18:00</li>
       </ul>
-      <div data-clip class="relative mt-8 rounded-2xl overflow-hidden min-h-[180px] hidden lg:flex grow">
-        <img src="assets/grand-store.jpg" alt="ТРЦ Grand Store, Караганда" class="absolute inset-0 w-full h-full object-cover" loading="lazy">
-        <div class="absolute inset-0 bg-gradient-to-t from-ink/90 via-ink/30 to-transparent"></div>
-        <div class="relative mt-auto p-5 text-white text-sm font-semibold leading-snug">Гарантия 12 месяцев на оборудование и материалы</div>
-      </div>
     </div>
     <form data-reveal class="js-form lg:col-span-7 self-start bg-white rounded-2xl p-6 sm:p-9 grid sm:grid-cols-2 gap-4 border border-line" action="#" method="post">
       <label class="flex flex-col gap-1.5 text-sm font-bold">Имя *<input type="text" required class="field" placeholder="Как к вам обращаться" autocomplete="name"></label>
@@ -707,22 +704,21 @@ tailwind.config = {
         <div class="flex flex-col gap-2.5 text-[15px]">
           <a href="tel:+77019450464" class="py-1 text-white font-bold text-lg hover:text-leaf">+7 701 945 04 64</a>
           <a href="mailto:imperia-vozduha@mail.ru" class="py-1 hover:text-white">imperia-vozduha@mail.ru</a>
-          <span>100012, г. Караганда, р-н им. Казыбек би, ул. Балқантау, д. 52, кв. 1</span>
-          <span>[РЕЖИМ РАБОТЫ]</span>
+          <span>100012, г. Караганда, р-н им. Казыбек би, ул.&nbsp;Балқантау, д.&nbsp;52, кв.&nbsp;1</span>
         </div>
       </div>
       <div>
         <div class="text-sm font-bold text-leaf mb-4">География</div>
         <div class="flex flex-col gap-2.5 text-[15px]"><span>Караганда</span><span>Темиртау</span><span>Карагандинская область</span></div>
         <div class="flex gap-2.5 mt-6">
-          <a href="#" aria-label="WhatsApp" class="w-11 h-11 rounded-[10px] border border-[#3A3F46] hover:border-leaf inline-flex items-center justify-center transition-colors"><img src="https://cdn.simpleicons.org/whatsapp/8CC152" alt="" width="20" height="20"></a>
+          <a href="https://wa.me/77019450464" target="_blank" rel="noopener" aria-label="Написать в WhatsApp" class="w-11 h-11 rounded-[10px] border border-[#3A3F46] hover:border-leaf inline-flex items-center justify-center transition-colors"><img src="https://cdn.simpleicons.org/whatsapp/8CC152" alt="" width="20" height="20"></a>
           <a href="#" aria-label="Telegram" class="w-11 h-11 rounded-[10px] border border-[#3A3F46] hover:border-leaf inline-flex items-center justify-center transition-colors"><img src="https://cdn.simpleicons.org/telegram/8CC152" alt="" width="20" height="20"></a>
           <a href="#" aria-label="Instagram" class="w-11 h-11 rounded-[10px] border border-[#3A3F46] hover:border-leaf inline-flex items-center justify-center transition-colors"><img src="https://cdn.simpleicons.org/instagram/8CC152" alt="" width="20" height="20"></a>
         </div>
       </div>
     </div>
     <div class="flex flex-wrap justify-between gap-3 pt-6 text-sm text-[#8E949C]">
-      <span>© 2026 ТОО «Империя Воздуха» · [БИН / РЕКВИЗИТЫ]</span>
+      <span>© 2026 ТОО «Империя Воздуха»</span>
       <a href="#" class="py-1 text-[#AEB3BA] hover:text-white">Политика конфиденциальности</a>
     </div>
   </div>
