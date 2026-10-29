@@ -61,6 +61,40 @@ tailwind.config = {
   .slide img { transform: scale(1.06); transition: transform 1.6s cubic-bezier(.2,.7,.2,1); }
   .slide.is-active img { transform: scale(1); }
 
+  /* Hero: вместе с шапкой занимает весь экран */
+  /* Телефон: первый экран — заголовок и кнопки, панель с цифрами сразу под ним */
+  .hero-content { min-height: calc(100vh - 77px); min-height: calc(100svh - 77px); }
+  .hero-title { font-size: clamp(30px, 8vw, 44px); }
+  @media (min-width: 768px) {
+    .hero { min-height: calc(100vh - 77px); min-height: calc(100svh - 77px); }
+    .hero-content { min-height: 0; }
+  }
+  @media (min-width: 1024px) { .hero-title { font-size: clamp(40px, min(4.6vw, 6.6vh), 68px); } }
+  .hero-shade {
+    background:
+      radial-gradient(60% 70% at 0% 30%, rgba(140,193,82,.14), transparent 70%),
+      linear-gradient(90deg, rgba(22,25,29,.94) 0%, rgba(22,25,29,.82) 38%, rgba(22,25,29,.35) 72%, rgba(22,25,29,.2) 100%),
+      linear-gradient(0deg, rgba(22,25,29,.9) 0%, transparent 40%);
+  }
+  @media (max-width: 1023px) {
+    .hero-shade { background: linear-gradient(180deg, rgba(22,25,29,.78) 0%, rgba(22,25,29,.86) 60%, rgba(22,25,29,.95) 100%); }
+  }
+  @keyframes cue { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(4px); } }
+  .scroll-cue svg { animation: cue 1.8s ease-in-out infinite; }
+
+  /* Попап */
+  .popup { border: 0; box-shadow: 0 40px 120px -30px rgba(0,0,0,.6); }
+  .popup::backdrop { background: rgba(16,18,21,.62); backdrop-filter: blur(6px); -webkit-backdrop-filter: blur(6px); }
+  .popup[open] { animation: popup-in .45s cubic-bezier(.2,.8,.2,1); }
+  .popup[open]::backdrop { animation: fade-in .35s ease; }
+  .popup.is-closing { animation: popup-out .25s ease forwards; }
+  .popup.is-closing::backdrop { animation: fade-out .25s ease forwards; }
+  @keyframes popup-in { from { opacity: 0; transform: translateY(24px) scale(.97); } to { opacity: 1; transform: none; } }
+  @keyframes popup-out { to { opacity: 0; transform: translateY(12px) scale(.98); } }
+  @keyframes fade-in { from { opacity: 0; } }
+  @keyframes fade-out { to { opacity: 0; } }
+  body.popup-open { overflow: hidden; }
+
   /* Премиальные детали */
   .eyebrow { display: flex; align-items: center; gap: 10px; }
   .eyebrow::before { content: ''; width: 24px; height: 1.5px; background: currentColor; flex-shrink: 0; }
@@ -76,7 +110,7 @@ tailwind.config = {
   #scroll-progress { transform: scaleX(0); transform-origin: left; }
 
   /* Начальные состояния для анимаций (только когда включены) */
-  .anim [data-reveal], .anim [data-stagger] > *, .anim [data-hero] { opacity: 0; }
+  .anim [data-reveal], .anim [data-stagger] > *, .anim [data-hero], .anim [data-hero-bar] { opacity: 0; }
   .anim .h2, .anim h1 { visibility: hidden; }
   .anim [data-clip] { clip-path: inset(10% 10% 10% 10% round 16px); }
   :focus-visible { outline: 2px solid #4E7724; outline-offset: 3px; border-radius: 6px; }
@@ -110,7 +144,7 @@ tailwind.config = {
       <a href="#" aria-label="Написать в WhatsApp" class="hidden sm:inline-flex w-11 h-11 rounded-[10px] border border-[#3A3F46] items-center justify-center hover:border-leaf transition-colors">
         <img src="https://cdn.simpleicons.org/whatsapp/8CC152" alt="" width="20" height="20">
       </a>
-      <a href="#calc" class="hidden md:inline-flex items-center h-11 px-5 rounded-[10px] bg-brand hover:bg-brand-dark text-white font-bold text-[15px] whitespace-nowrap transition-colors">Получить расчёт</a>
+      <a data-popup href="#calc" class="hidden md:inline-flex items-center h-11 px-5 rounded-[10px] bg-brand hover:bg-brand-dark text-white font-bold text-[15px] whitespace-nowrap transition-colors">Получить расчёт</a>
       <button id="burger" type="button" aria-label="Открыть меню" aria-expanded="false" aria-controls="mobile-nav" class="xl:hidden inline-flex w-11 h-11 rounded-[10px] border border-[#3A3F46] text-white items-center justify-center cursor-pointer">
         <i data-lucide="menu"></i>
       </button>
@@ -125,7 +159,7 @@ tailwind.config = {
       <a href="#about" class="py-3 text-[#D5D8DC] border-b border-edge">О компании</a>
       <a href="#contacts" class="py-3 text-[#D5D8DC]">Контакты</a>
       <a href="tel:+70000000000" class="mt-2 py-3 text-white font-bold">[+7 ТЕЛЕФОН]</a>
-      <a href="#calc" class="mt-4 inline-flex items-center justify-center h-12 rounded-[10px] bg-brand text-white font-bold">Получить расчёт</a>
+      <a data-popup href="#calc" class="mt-4 inline-flex items-center justify-center h-12 rounded-[10px] bg-brand text-white font-bold">Получить расчёт</a>
     </div>
   </nav>
   <div id="scroll-progress" class="absolute left-0 right-0 -bottom-px h-[2px] bg-leaf" aria-hidden="true"></div>
@@ -134,38 +168,43 @@ tailwind.config = {
 <main>
 
 <!-- ============ HERO ============ -->
-<section id="top" class="bg-ink glow text-white overflow-hidden">
-  <div class="grid lg:grid-cols-2 lg:min-h-[640px]">
-    <div class="flex items-center">
-      <div class="w-full lg:max-w-[620px] lg:ml-auto px-4 sm:px-8 lg:pr-12 py-14 lg:py-20 flex flex-col gap-6">
-        <div data-hero class="eyebrow on-dark !mb-0">Караганда · Темиртау · с 2021 года</div>
-        <h1 class="m-0 text-[clamp(32px,3.6vw,50px)] leading-[1.1] font-extrabold tracking-[-0.02em]">Вентиляция и кондиционирование под ключ для коммерческих и промышленных объектов</h1>
-        <p data-hero class="m-0 text-[clamp(18px,1.6vw,21px)] leading-snug font-semibold text-leaf">От поставки оборудования до его стабильной работы</p>
-        <p data-hero class="m-0 text-base leading-relaxed text-[#C2C6CC] max-w-[560px]">Поставка оборудования, монтаж, пусконаладка и техническое обслуживание вентиляционных систем, кондиционеров и VRF/VRV-систем. Комплексные инженерные решения с учётом особенностей вашего объекта.</p>
-        <div data-hero class="flex flex-wrap gap-3 pt-1">
-          <a href="#calc" class="inline-flex items-center gap-2.5 h-[52px] px-6 rounded-xl bg-brand hover:bg-brand-dark text-white font-bold transition-colors">Получить расчёт стоимости<i data-lucide="arrow-right" class="ico-sm"></i></a>
-          <a href="#service" class="inline-flex items-center h-[52px] px-6 rounded-xl border-[1.5px] border-[#5A6068] hover:border-white text-white font-bold transition-colors">Заказать сервисное обслуживание</a>
-        </div>
-        <dl data-hero class="grid grid-cols-2 xl:grid-cols-4 gap-y-5 mt-6 pt-7 border-t border-edge">
-          <div class="pr-4"><dt class="text-xl font-extrabold whitespace-nowrap">с 2021</dt><dd class="text-sm leading-snug text-[#AEB3BA] mt-1">на рынке Казахстана</dd></div>
-          <div class="pl-5 border-l border-edge"><dt class="text-xl font-extrabold whitespace-nowrap"><span data-count="2">2</span> лицензии</dt><dd class="text-sm leading-snug text-[#AEB3BA] mt-1">проектирование и СМР</dd></div>
-          <div class="pr-4 xl:pl-5 xl:border-l xl:border-edge"><dt class="text-xl font-extrabold whitespace-nowrap"><span data-count="12">12</span> мес.</dt><dd class="text-sm leading-snug text-[#AEB3BA] mt-1">гарантия на оборудование</dd></div>
-          <div class="pl-5 border-l border-edge"><dt class="text-xl font-extrabold whitespace-nowrap"><span data-count="20">20</span>+</dt><dd class="text-sm leading-snug text-[#AEB3BA] mt-1">объектов в портфолио</dd></div>
-        </dl>
+<section id="top" class="hero relative bg-ink text-white overflow-hidden flex flex-col">
+  <div class="absolute inset-0" aria-hidden="true">
+    <img src="assets/zhuldyz.jpg" alt="" class="hero-img absolute inset-0 w-full h-full object-cover object-[70%_center] will-change-transform" fetchpriority="high">
+    <div class="hero-shade absolute inset-0"></div>
+  </div>
+
+  <div class="hero-content wrap relative flex-1 flex items-center pt-12 pb-10 lg:pt-[clamp(32px,6vh,72px)] lg:pb-[clamp(28px,5vh,64px)]">
+    <div class="max-w-[1000px] flex flex-col gap-5 lg:gap-[clamp(16px,2.6vh,28px)]">
+      <div data-hero class="eyebrow on-dark !mb-0">Караганда · Темиртау · с 2021 года</div>
+      <h1 class="hero-title m-0 leading-[1.04] font-extrabold tracking-[-0.03em]">Вентиляция и кондиционирование <span class="text-leaf">под ключ</span> для коммерческих и промышленных объектов</h1>
+      <p data-hero class="m-0 text-[clamp(18px,1.7vw,22px)] leading-snug font-semibold text-white/90">От поставки оборудования до его стабильной работы</p>
+      <p data-hero class="hidden sm:block m-0 text-base lg:text-[17px] leading-relaxed text-[#C9CDD2] max-w-[640px]">Поставка оборудования, монтаж, пусконаладка и техническое обслуживание вентиляционных систем, кондиционеров и VRF/VRV-систем. Комплексные инженерные решения с учётом особенностей вашего объекта.</p>
+      <div data-hero class="flex flex-col sm:flex-row sm:flex-wrap gap-3 pt-2">
+        <a data-popup href="#calc" class="inline-flex items-center justify-center gap-2.5 h-14 px-7 rounded-xl bg-brand hover:bg-brand-dark text-white font-bold transition-colors">Получить расчёт стоимости<i data-lucide="arrow-right" class="ico-sm"></i></a>
+        <a href="#service" class="inline-flex items-center justify-center h-14 px-7 rounded-xl border-[1.5px] border-white/30 bg-white/5 backdrop-blur-sm hover:border-white hover:bg-white/10 text-white font-bold transition-colors">Заказать сервисное обслуживание</a>
       </div>
     </div>
-    <div class="hero-media relative min-h-[300px] sm:min-h-[420px] overflow-hidden">
-      <img src="assets/zhuldyz.jpg" alt="Ресторан «Жулдыз», ГК «Космонавт», Караганда — объект компании" class="hero-img absolute inset-0 w-full h-full object-cover will-change-transform" fetchpriority="high">
-      <div class="absolute inset-0 bg-gradient-to-r from-ink/40 to-transparent lg:from-ink/60 lg:via-transparent"></div>
-      <div data-hero class="absolute right-4 bottom-4 sm:right-6 sm:bottom-6 bg-ink/90 backdrop-blur-sm rounded-[10px] px-4 py-3 text-sm leading-snug text-white">
-        <span class="text-leaf font-bold">Объект:</span> ресторан «Жулдыз»,<br>ГК «Космонавт», Караганда
+  </div>
+
+  <div data-hero-bar class="relative border-t border-white/10 bg-ink/60 backdrop-blur-md">
+    <div class="wrap flex flex-col lg:flex-row lg:items-center gap-5 lg:gap-10 py-5 lg:py-6">
+      <dl class="flex-1 grid grid-cols-2 sm:grid-cols-4 gap-y-4 m-0">
+        <div class="pr-4"><dt class="text-xl lg:text-2xl font-extrabold whitespace-nowrap">с 2021</dt><dd class="m-0 text-sm leading-snug text-[#AEB3BA] mt-1">на рынке Казахстана</dd></div>
+        <div class="pl-5 border-l border-white/10"><dt class="text-xl lg:text-2xl font-extrabold whitespace-nowrap"><span data-count="2">2</span> лицензии</dt><dd class="m-0 text-sm leading-snug text-[#AEB3BA] mt-1">проектирование и СМР</dd></div>
+        <div class="pr-4 sm:pl-5 sm:border-l sm:border-white/10"><dt class="text-xl lg:text-2xl font-extrabold whitespace-nowrap"><span data-count="12">12</span> мес.</dt><dd class="m-0 text-sm leading-snug text-[#AEB3BA] mt-1">гарантия на оборудование</dd></div>
+        <div class="pl-5 border-l border-white/10"><dt class="text-xl lg:text-2xl font-extrabold whitespace-nowrap"><span data-count="20">20</span>+</dt><dd class="m-0 text-sm leading-snug text-[#AEB3BA] mt-1">объектов в портфолио</dd></div>
+      </dl>
+      <div class="flex items-center justify-between lg:justify-end gap-6 lg:pl-10 lg:border-l lg:border-white/10">
+        <p class="m-0 text-sm leading-snug text-[#C9CDD2]"><span class="text-leaf font-bold">Объект на фото:</span> ресторан «Жулдыз»,<br>ГК «Космонавт», Караганда</p>
+        <a href="#next" aria-label="Листать вниз" class="scroll-cue shrink-0 w-11 h-11 rounded-full border border-white/25 hover:border-leaf inline-flex items-center justify-center text-white transition-colors"><i data-lucide="arrow-down" class="ico-sm"></i></a>
       </div>
     </div>
   </div>
 </section>
 
 <!-- ============ ПОЛНЫЙ ЦИКЛ ============ -->
-<section class="bg-white py-20 lg:py-24">
+<section id="next" class="bg-white py-20 lg:py-24">
   <div class="wrap">
     <div class="grid lg:grid-cols-12 gap-6 lg:gap-10 items-end mb-12">
       <div class="lg:col-span-7">
@@ -212,13 +251,13 @@ tailwind.config = {
         <span class="w-12 h-12 rounded-xl bg-soft text-brand inline-flex items-center justify-center"><i data-lucide="thermometer-sun"></i></span>
         <h3 class="mt-3 mb-0 text-lg font-extrabold text-ink">В помещении некомфортно</h3>
         <p class="m-0 text-[15px] leading-relaxed text-muted grow">Разбираемся, почему душно, жарко или холодно, откуда появляются запахи и что мешает нормальной работе.</p>
-        <a href="#calc" class="tlink inline-flex items-center gap-2 font-bold text-[15px] text-brand hover:text-brand-dark">Вызвать инженера<i data-lucide="arrow-right" class="ico-sm"></i></a>
+        <a data-popup href="#calc" class="tlink inline-flex items-center gap-2 font-bold text-[15px] text-brand hover:text-brand-dark">Вызвать инженера<i data-lucide="arrow-right" class="ico-sm"></i></a>
       </article>
       <article class="bg-white rounded-2xl p-7 flex flex-col gap-3 border border-line">
         <span class="w-12 h-12 rounded-xl bg-soft text-brand inline-flex items-center justify-center"><i data-lucide="building-2"></i></span>
         <h3 class="mt-3 mb-0 text-lg font-extrabold text-ink">Открытие или реконструкция</h3>
         <p class="m-0 text-[15px] leading-relaxed text-muted grow">Подбираем решение с учётом назначения помещений, существующих систем, бюджета и сроков заказчика.</p>
-        <a href="#calc" class="tlink inline-flex items-center gap-2 font-bold text-[15px] text-brand hover:text-brand-dark">Получить расчёт<i data-lucide="arrow-right" class="ico-sm"></i></a>
+        <a data-popup href="#calc" class="tlink inline-flex items-center gap-2 font-bold text-[15px] text-brand hover:text-brand-dark">Получить расчёт<i data-lucide="arrow-right" class="ico-sm"></i></a>
       </article>
       <article class="bg-white rounded-2xl p-7 flex flex-col gap-3 border border-line">
         <span class="w-12 h-12 rounded-xl bg-soft text-brand inline-flex items-center justify-center"><i data-lucide="triangle-alert"></i></span>
@@ -238,7 +277,7 @@ tailwind.config = {
         <div data-reveal class="eyebrow">Услуги</div>
         <h2 class="h2 m-0 text-ink">Что мы делаем</h2>
       </div>
-      <a data-reveal href="#calc" class="tlink inline-flex items-center gap-2 font-bold text-brand hover:text-brand-dark">Рассчитать стоимость работ<i data-lucide="arrow-right" class="ico-sm"></i></a>
+      <a data-reveal data-popup href="#calc" class="tlink inline-flex items-center gap-2 font-bold text-brand hover:text-brand-dark">Рассчитать стоимость работ<i data-lucide="arrow-right" class="ico-sm"></i></a>
     </div>
     <div data-stagger class="grid sm:grid-cols-2 xl:grid-cols-4 gap-4">
       <article class="rounded-2xl border border-line p-6 flex flex-col gap-3">
@@ -282,7 +321,7 @@ tailwind.config = {
         <div class="absolute inset-0 bg-gradient-to-t from-ink via-ink/80 to-ink/30"></div>
         <div class="relative p-6 flex flex-col justify-end gap-4">
           <p class="m-0 text-[17px] leading-snug font-bold">Не нашли нужную услугу? Опишите задачу — инженер подскажет решение.</p>
-          <a href="#calc" class="self-start inline-flex items-center h-11 px-5 rounded-[10px] bg-brand hover:bg-brand-dark font-bold text-[15px] transition-colors">Задать вопрос инженеру</a>
+          <a data-popup href="#calc" class="self-start inline-flex items-center h-11 px-5 rounded-[10px] bg-brand hover:bg-brand-dark font-bold text-[15px] transition-colors">Задать вопрос инженеру</a>
         </div>
       </article>
     </div>
@@ -350,12 +389,12 @@ tailwind.config = {
           <div class="text-sm font-bold text-leaf mt-2">Рекомендуем</div>
           <h3 class="m-0 text-xl font-extrabold">Договор на регулярный сервис</h3>
           <p class="m-0 text-sm leading-relaxed text-[#C2C6CC]">Плановое ТО по регламенту производителя. Расходы на обслуживание предсказуемы, неисправности выявляются на ранней стадии.</p>
-          <a href="#calc" class="mt-2 inline-flex items-center justify-center gap-2 min-h-12 py-3 px-4 text-center leading-snug rounded-[10px] bg-brand hover:bg-brand-dark font-bold text-[15px] transition-colors">Заказать сервисное обслуживание<i data-lucide="arrow-right" class="ico-sm"></i></a>
+          <a data-popup href="#calc" class="mt-2 inline-flex items-center justify-center gap-2 min-h-12 py-3 px-4 text-center leading-snug rounded-[10px] bg-brand hover:bg-brand-dark font-bold text-[15px] transition-colors">Заказать сервисное обслуживание<i data-lucide="arrow-right" class="ico-sm"></i></a>
         </div>
         <div class="border border-line rounded-2xl p-6 flex flex-col gap-2">
           <h3 class="m-0 text-lg font-extrabold text-ink">Разовое обслуживание</h3>
           <p class="m-0 text-sm leading-relaxed text-muted">Диагностика, ремонт, чистка или подготовка к сезону по вашей заявке. Состав работ и стоимость согласуем до начала.</p>
-          <a href="#calc" class="tlink mt-1 inline-flex items-center gap-2 font-bold text-[15px] text-brand hover:text-brand-dark">Оставить заявку<i data-lucide="arrow-right" class="ico-sm"></i></a>
+          <a data-popup href="#calc" class="tlink mt-1 inline-flex items-center gap-2 font-bold text-[15px] text-brand hover:text-brand-dark">Оставить заявку<i data-lucide="arrow-right" class="ico-sm"></i></a>
         </div>
       </div>
     </div>
@@ -522,7 +561,7 @@ tailwind.config = {
         <h2 class="h2 m-0 mb-5">Профессиональная команда для вашей инженерной задачи</h2>
         <p data-reveal class="m-0 mb-4 text-base leading-relaxed text-[#C2C6CC]">«Империя Воздуха» работает в Караганде с 16 июля 2021 года. Проектируем инженерные системы, поставляем оборудование, выполняем монтаж и настройку — и продолжаем сопровождение в период эксплуатации и после окончания гарантии.</p>
         <p class="m-0 text-base leading-relaxed text-[#C2C6CC]">В структуре компании — участок монтажа вентиляции, участок монтажа кондиционирования и VRF/VRV-систем и сервисный отдел.</p>
-        <a data-reveal href="#calc" class="mt-8 inline-flex items-center gap-2 h-12 px-6 rounded-[10px] bg-brand hover:bg-brand-dark font-bold transition-colors">Получить расчёт<i data-lucide="arrow-right" class="ico-sm"></i></a>
+        <a data-reveal data-popup href="#calc" class="mt-8 inline-flex items-center gap-2 h-12 px-6 rounded-[10px] bg-brand hover:bg-brand-dark font-bold transition-colors">Получить расчёт<i data-lucide="arrow-right" class="ico-sm"></i></a>
       </div>
       <div data-stagger class="lg:col-span-7 grid sm:grid-cols-2 gap-x-8 gap-y-8">
         <div class="flex gap-4"><span class="w-11 h-11 shrink-0 rounded-xl border border-[#3A3F46] text-leaf inline-flex items-center justify-center"><i data-lucide="users"></i></span><div><h3 class="m-0 mb-1.5 font-extrabold">Собственная штатная команда</h3><p class="m-0 text-sm leading-relaxed text-[#AEB3BA]">Монтажники вентиляции и кондиционирования, специалисты по пусконаладке — без случайных субподрядчиков.</p></div></div>
@@ -677,6 +716,45 @@ tailwind.config = {
   </div>
 </footer>
 
+
+<!-- ============ ПОПАП ЗАЯВКИ ============ -->
+<dialog id="lead-popup" class="popup m-auto p-0 w-[min(920px,calc(100%-32px))] max-h-[calc(100dvh-32px)] rounded-3xl bg-white text-body overflow-hidden" aria-labelledby="popup-title">
+  <div class="grid md:grid-cols-[5fr_7fr] max-h-[calc(100dvh-32px)] overflow-y-auto">
+    <div class="relative hidden md:block min-h-full bg-ink">
+      <img src="assets/cosmo-garden.jpg" alt="" class="absolute inset-0 w-full h-full object-cover" loading="lazy">
+      <div class="absolute inset-0 bg-gradient-to-t from-ink via-ink/50 to-ink/10"></div>
+      <div class="absolute left-0 right-0 bottom-0 p-7 text-white">
+        <img src="assets/logo-white.png" alt="Империя Воздуха" class="h-9 w-auto mb-5">
+        <ul class="m-0 p-0 list-none flex flex-col gap-2.5 text-sm text-[#D5D8DC]">
+          <li class="flex gap-2.5 items-start"><i data-lucide="check" class="ico-sm text-leaf shrink-0 mt-px"></i>Выезд инженера и осмотр объекта</li>
+          <li class="flex gap-2.5 items-start"><i data-lucide="check" class="ico-sm text-leaf shrink-0 mt-px"></i>Решение и стоимость — до начала работ</li>
+          <li class="flex gap-2.5 items-start"><i data-lucide="check" class="ico-sm text-leaf shrink-0 mt-px"></i>Гарантия 12 месяцев на оборудование</li>
+        </ul>
+      </div>
+    </div>
+    <div class="relative p-6 sm:p-9">
+      <button type="button" data-popup-close aria-label="Закрыть" class="absolute right-4 top-4 w-11 h-11 rounded-full bg-soft hover:bg-line text-ink inline-flex items-center justify-center cursor-pointer transition-colors"><i data-lucide="x" class="ico-sm"></i></button>
+      <div class="eyebrow !mb-3 pr-12">Заявка инженеру</div>
+      <h2 id="popup-title" tabindex="-1" class="outline-none m-0 pr-12 text-2xl sm:text-[28px] leading-tight font-extrabold tracking-[-0.02em] text-ink">Получить расчёт стоимости</h2>
+      <p class="m-0 mt-3 mb-6 text-[15px] leading-relaxed text-muted">Перезвоним в рабочее время, уточним задачу и согласуем выезд инженера.</p>
+      <form class="js-form flex flex-col gap-4" action="#" method="post">
+        <input type="hidden" name="source" id="popup-source" value="">
+        <label class="flex flex-col gap-1.5 text-sm font-bold">Имя *<input type="text" name="name" required class="field" placeholder="Как к вам обращаться" autocomplete="name"></label>
+        <label class="flex flex-col gap-1.5 text-sm font-bold">Телефон *<input type="tel" name="phone" required class="field" placeholder="+7 (___) ___-__-__" autocomplete="tel"></label>
+        <label class="flex flex-col gap-1.5 text-sm font-bold">Тип объекта
+          <span class="relative"><select name="object" class="field"><option>Ресторан, кафе</option><option>Торговый центр, магазин</option><option>Офис</option><option>Производство</option><option>Фитнес, спа, салон</option><option>Квартира, частный дом</option><option>Другое</option></select><i data-lucide="chevron-down" class="ico-sm absolute right-3 top-1/2 -translate-y-1/2 pointer-events-none text-muted"></i></span>
+        </label>
+        <label class="flex items-start gap-2.5 text-[13px] leading-normal text-muted cursor-pointer">
+          <input type="checkbox" required class="w-[18px] h-[18px] mt-0.5 accent-brand shrink-0">Согласен на обработку персональных данных в соответствии с политикой конфиденциальности
+        </label>
+        <p class="form-done hidden m-0 text-[15px] font-semibold text-brand" role="status"></p>
+        <button type="submit" class="h-14 rounded-xl bg-brand hover:bg-brand-dark text-white font-bold text-base cursor-pointer transition-colors inline-flex items-center justify-center gap-2">Отправить заявку<i data-lucide="arrow-right" class="ico-sm"></i></button>
+        <p class="m-0 text-[13px] text-muted text-center">или позвоните: <a href="tel:+70000000000" class="font-bold text-ink hover:text-brand">[+7 ТЕЛЕФОН]</a></p>
+      </form>
+    </div>
+  </div>
+</dialog>
+
 <script src="https://unpkg.com/lucide@0.469.0/dist/umd/lucide.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.13.0/gsap.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.13.0/ScrollTrigger.min.js"></script>
@@ -753,11 +831,11 @@ tailwind.config = {
     const ease = 'power3.out';
 
     // Плавная прокрутка
-    const lenis = new Lenis({ duration: 1.1, smoothWheel: true });
+    const lenis = window.lenis = new Lenis({ duration: 1.1, smoothWheel: true });
     lenis.on('scroll', ScrollTrigger.update);
     gsap.ticker.add(t => lenis.raf(t * 1000));
     gsap.ticker.lagSmoothing(0);
-    document.querySelectorAll('a[href^="#"]').forEach(a => a.addEventListener('click', e => {
+    document.querySelectorAll('a[href^="#"]:not([data-popup])').forEach(a => a.addEventListener('click', e => {
       const id = a.getAttribute('href');
       if (id.length < 2) return;
       const target = document.querySelector(id);
@@ -775,17 +853,18 @@ tailwind.config = {
       const h1Split = SplitText.create(h1, { type: 'lines', mask: 'lines' });
       gsap.set(h1, { visibility: 'visible' });
       const tl = gsap.timeline({ defaults: { ease } });
-      tl.fromTo('.hero-media', { clipPath: 'inset(0 0 0 100%)' }, { clipPath: 'inset(0 0 0 0%)', duration: 1.3, ease: 'power4.inOut' }, 0)
-        .fromTo('.hero-img', { scale: 1.18 }, { scale: 1, duration: 2.2, ease: 'power2.out' }, 0)
-        .fromTo('[data-hero]', { y: 22, opacity: 0 }, { y: 0, opacity: 1, duration: .8, stagger: .09 }, .35)
-        .from(h1Split.lines, { yPercent: 110, duration: 1, stagger: .09 }, .4);
+      tl.fromTo('.hero-img', { scale: 1.2, opacity: 0 }, { scale: 1.04, opacity: 1, duration: 2.4, ease: 'power2.out' }, 0)
+        .fromTo('[data-hero]', { y: 22, opacity: 0 }, { y: 0, opacity: 1, duration: .8, stagger: .1 }, .3)
+        .from(h1Split.lines, { yPercent: 110, duration: 1.05, stagger: .09 }, .45)
+        .fromTo('[data-hero-bar]', { y: 40, opacity: 0 }, { y: 0, opacity: 1, duration: 1, ease: 'power4.out' }, .7);
       // Счётчики
       document.querySelectorAll('[data-count]').forEach(el => {
         const obj = { v: 0 };
         tl.to(obj, { v: +el.dataset.count, duration: 1.4, ease: 'power2.out', onUpdate: () => { el.textContent = Math.round(obj.v); } }, .9);
       });
       // Параллакс фото в hero
-      gsap.to('.hero-img', { yPercent: 10, ease: 'none', scrollTrigger: { trigger: '#top', start: 'top top', end: 'bottom top', scrub: true } });
+      gsap.to('.hero-img', { yPercent: 12, ease: 'none', scrollTrigger: { trigger: '#top', start: 'top top', end: 'bottom top', scrub: true } });
+      gsap.to('.hero-content', { yPercent: -8, opacity: .2, ease: 'none', scrollTrigger: { trigger: '#top', start: 'top top', end: 'bottom top', scrub: true } });
 
       // Заголовки секций — строки выезжают из-под маски
       document.querySelectorAll('.h2').forEach(h => {
@@ -840,6 +919,40 @@ tailwind.config = {
       ScrollTrigger.refresh();
     }));
   }
+
+  // Попап заявки: открывается кнопками с data-popup, заголовок берётся из текста кнопки
+  const popup = document.getElementById('lead-popup');
+  const popupTitle = document.getElementById('popup-title');
+  let popupOpener = null;
+  const openPopup = btn => {
+    const label = btn.textContent.replace(/\s+/g, ' ').trim();
+    popupTitle.textContent = label || 'Оставить заявку';
+    document.getElementById('popup-source').value = label;
+    popup.querySelector('.form-done').classList.add('hidden');
+    popupOpener = btn;
+    popup.showModal();
+    popupTitle.focus({ preventScroll: true });
+    document.body.classList.add('popup-open');
+    window.lenis?.stop();
+  };
+  const closePopup = () => {
+    if (!popup.open || popup.classList.contains('is-closing')) return;
+    popup.classList.add('is-closing');
+    setTimeout(() => { popup.classList.remove('is-closing'); popup.close(); }, 240);
+  };
+  popup.addEventListener('close', () => {
+    document.body.classList.remove('popup-open');
+    window.lenis?.start();
+    popupOpener?.focus();
+  });
+  popup.addEventListener('cancel', e => { e.preventDefault(); closePopup(); });
+  popup.addEventListener('click', e => { if (e.target === popup) closePopup(); });
+  popup.querySelector('[data-popup-close]').addEventListener('click', closePopup);
+  document.querySelectorAll('[data-popup]').forEach(btn => btn.addEventListener('click', e => {
+    e.preventDefault();
+    if (!mobileNav.classList.contains('hidden')) { mobileNav.classList.add('hidden'); burger.setAttribute('aria-expanded', 'false'); }
+    openPopup(btn);
+  }));
 
   // Имя прикреплённого файла
   document.getElementById('file-input').addEventListener('change', e => {
