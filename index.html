@@ -117,6 +117,8 @@ tailwind.config = {
     20% { color: #4E7724; transform: translateX(5px); }
   }
 
+  .svc-title { font-size: clamp(24px, 2.3vw, 32px); }
+
   /* Премиальные детали */
   .eyebrow { display: flex; align-items: center; gap: 10px; }
   .eyebrow::before { content: ''; width: 24px; height: 1.5px; background: currentColor; flex-shrink: 0; }
@@ -394,9 +396,9 @@ tailwind.config = {
 <section id="service" class="bg-white py-20 lg:py-24">
   <div class="wrap">
     <div class="grid lg:grid-cols-12 gap-10 lg:gap-12">
-      <div class="lg:col-span-8">
+      <div class="lg:col-span-8 flex flex-col">
         <div data-reveal class="eyebrow">Сервисное обслуживание</div>
-        <h2 class="h2 m-0 mb-5 text-ink max-w-[680px]">Ваше оборудование должно работать. Наша задача — поддержать его работоспособность</h2>
+        <h2 class="h2 svc-title m-0 mb-4 text-ink max-w-[720px]">Ваше оборудование должно работать. Наша задача — поддержать его работоспособность</h2>
         <p data-reveal class="m-0 mb-7 text-base leading-relaxed text-muted max-w-[620px]">Сопровождаем системы на протяжении всей эксплуатации — в том числе после окончания гарантии и если монтаж выполняли не мы.</p>
         <ul data-stagger class="m-0 p-0 list-none grid sm:grid-cols-2 gap-x-8 gap-y-3 text-[15px] text-body">
           <li class="flex gap-3 items-start"><i data-lucide="check" class="ico-sm text-brand mt-0.5 shrink-0"></i>Регулярное техническое обслуживание</li>
@@ -406,9 +408,9 @@ tailwind.config = {
           <li class="flex gap-3 items-start"><i data-lucide="check" class="ico-sm text-brand mt-0.5 shrink-0"></i>Дефектные ведомости и рекомендации</li>
           <li class="flex gap-3 items-start"><i data-lucide="check" class="ico-sm text-brand mt-0.5 shrink-0"></i>ТО вентустановок, кондиционеров, VRF</li>
         </ul>
-        <div data-stagger class="mt-8 grid sm:grid-cols-2 gap-4">
-          <figure class="m-0 rounded-2xl overflow-hidden aspect-[4/3] bg-soft"><img src="assets/service-diagnostics.webp" alt="Инженер проверяет давление хладагента в наружном блоке кондиционера" class="w-full h-full object-cover object-[38%_center]" loading="lazy" width="1100" height="619"></figure>
-          <figure class="m-0 rounded-2xl overflow-hidden aspect-[4/3] bg-soft"><img src="assets/service-filter.webp" alt="Замена фильтра во внутреннем кассетном блоке" class="w-full h-full object-cover" loading="lazy" width="1100" height="825"></figure>
+        <div data-stagger class="mt-8 grid sm:grid-cols-2 gap-4 lg:flex-1 lg:min-h-[260px]">
+          <figure class="m-0 rounded-2xl overflow-hidden aspect-[4/3] lg:aspect-auto lg:h-full bg-soft"><img src="assets/service-diagnostics.webp" alt="Инженер проверяет давление хладагента в наружном блоке кондиционера" class="w-full h-full object-cover object-[38%_center]" loading="lazy" width="1100" height="619"></figure>
+          <figure class="m-0 rounded-2xl overflow-hidden aspect-[4/3] lg:aspect-auto lg:h-full bg-soft"><img src="assets/service-filter.webp" alt="Замена фильтра во внутреннем кассетном блоке" class="w-full h-full object-cover" loading="lazy" width="1100" height="825"></figure>
         </div>
       </div>
       <div data-stagger class="lg:col-span-4 flex flex-col gap-4">
@@ -419,7 +421,7 @@ tailwind.config = {
           <p class="m-0 text-sm leading-relaxed text-[#C2C6CC]">Плановое ТО по регламенту производителя. Расходы на обслуживание предсказуемы, неисправности выявляются на ранней стадии.</p>
           <a data-popup href="#calc" class="mt-2 inline-flex items-center justify-center gap-2 min-h-12 py-3 px-4 text-center leading-snug rounded-[10px] bg-brand hover:bg-brand-dark font-bold text-[15px] transition-colors">Заказать сервисное обслуживание<i data-lucide="arrow-right" class="ico-sm"></i></a>
         </div>
-        <div class="border border-line rounded-2xl p-6 flex flex-col gap-2">
+        <div class="border border-line rounded-2xl p-6 flex flex-col gap-2 lg:flex-1">
           <h3 class="m-0 text-lg font-extrabold text-ink">Разовое обслуживание</h3>
           <p class="m-0 text-sm leading-relaxed text-muted">Диагностика, ремонт, чистка или подготовка к сезону по вашей заявке. Состав работ и стоимость согласуем до начала.</p>
           <a data-popup href="#calc" class="tlink mt-1 inline-flex items-center gap-2 font-bold text-[15px] text-brand hover:text-brand-dark">Оставить заявку<i data-lucide="arrow-right" class="ico-sm"></i></a>
