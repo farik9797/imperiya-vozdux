@@ -117,6 +117,10 @@ tailwind.config = {
     20% { color: #4E7724; transform: translateX(5px); }
   }
 
+  /* Fixed-параллакс баннера: фото закреплено к окну, видно только внутри секции (работает и на iOS) */
+  .sit-frame { clip-path: inset(0); }
+  @supports (height: 100lvh) { .sit-bg { height: 100lvh; } }
+
   .svc-title { font-size: clamp(24px, 2.3vw, 32px); }
   /* Слайдер «Сложные системы»: от верха заголовка до низа кнопки */
   @media (min-width: 1024px) { .sys-media { padding-top: 38px; } }
@@ -269,8 +273,8 @@ tailwind.config = {
 
 <!-- ============ СИТУАЦИИ ============ -->
 <section class="on-dark relative bg-ink text-white py-20 lg:py-28 overflow-hidden">
-  <div class="absolute inset-0" aria-hidden="true">
-    <img src="assets/situations-bg.webp" srcset="assets/situations-bg-900.webp 900w, assets/situations-bg.webp 1920w" sizes="100vw" alt="" class="sit-bg absolute left-0 w-full h-[120%] -top-[10%] object-cover will-change-transform" loading="lazy">
+  <div class="sit-frame absolute inset-0" aria-hidden="true">
+    <img src="assets/situations-bg.webp" srcset="assets/situations-bg-900.webp 900w, assets/situations-bg.webp 1920w" sizes="max(100vw, 178vh)" alt="" class="sit-bg fixed inset-0 w-full h-screen object-cover">
     <div class="absolute inset-0 bg-gradient-to-b from-ink/90 via-ink/70 to-ink/90"></div>
   </div>
   <div class="wrap relative">
@@ -941,7 +945,6 @@ tailwind.config = {
       });
       // Параллакс фото в hero
       gsap.to('.hero-img', { yPercent: 12, ease: 'none', scrollTrigger: { trigger: '#top', start: 'top top', end: 'bottom top', scrub: true } });
-      gsap.fromTo('.sit-bg', { yPercent: -8 }, { yPercent: 8, ease: 'none', scrollTrigger: { trigger: '.sit-bg', start: 'top bottom', end: 'bottom top', scrub: true } });
       gsap.to('.hero-content', { yPercent: -8, opacity: .2, ease: 'none', scrollTrigger: { trigger: '#top', start: 'top top', end: 'bottom top', scrub: true } });
 
       // Заголовки секций — строки выезжают из-под маски
