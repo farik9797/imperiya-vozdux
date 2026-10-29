@@ -96,6 +96,16 @@ tailwind.config = {
   @keyframes fade-out { to { opacity: 0; } }
   body.popup-open { overflow: hidden; }
 
+  /* Фирменный курсор: только мышь, только при включённых анимациях */
+  .cursor-dot, .cursor-ring { position: fixed; left: 0; top: 0; pointer-events: none; z-index: 60; border-radius: 50%; opacity: 0; transition: opacity .2s ease; }
+  .cursor-dot { width: 6px; height: 6px; margin: -3px 0 0 -3px; background: #8CC152; }
+  .cursor-ring { width: 36px; height: 36px; margin: -18px 0 0 -18px; border: 1.5px solid rgba(140,193,82,.85); transition: opacity .2s ease, width .25s ease, height .25s ease, margin .25s ease, background-color .25s ease, border-color .25s ease; }
+  html.has-cursor .cursor-dot, html.has-cursor .cursor-ring { opacity: 1; }
+  html.has-cursor.cursor-out .cursor-dot, html.has-cursor.cursor-out .cursor-ring, body.popup-open .cursor-dot, body.popup-open .cursor-ring { opacity: 0; }
+  html.has-cursor .cursor-ring.is-hover { width: 60px; height: 60px; margin: -30px 0 0 -30px; background: rgba(140,193,82,.14); border-color: rgba(140,193,82,.6); }
+  html.has-cursor .cursor-ring.is-down { width: 26px; height: 26px; margin: -13px 0 0 -13px; }
+  html.has-cursor body:not(.popup-open), html.has-cursor body:not(.popup-open) *:not(input):not(textarea):not(select):not(option) { cursor: none !important; }
+
   /* Премиальные детали */
   .eyebrow { display: flex; align-items: center; gap: 10px; }
   .eyebrow::before { content: ''; width: 24px; height: 1.5px; background: currentColor; flex-shrink: 0; }
@@ -723,7 +733,7 @@ tailwind.config = {
 <dialog id="lead-popup" class="popup m-auto p-0 w-[min(920px,calc(100%-32px))] max-h-[calc(100dvh-32px)] rounded-3xl bg-white text-body overflow-hidden" aria-labelledby="popup-title">
   <div class="grid md:grid-cols-[5fr_7fr] max-h-[calc(100dvh-32px)] overflow-y-auto">
     <div class="relative hidden md:block min-h-full bg-ink">
-      <img src="assets/cosmo-garden.jpg" alt="" class="absolute inset-0 w-full h-full object-cover" loading="lazy">
+      <img src="assets/hero-still.webp" alt="" class="absolute inset-0 w-full h-full object-cover object-[62%_center]" loading="lazy">
       <div class="absolute inset-0 bg-gradient-to-t from-ink via-ink/50 to-ink/10"></div>
       <div class="absolute left-0 right-0 bottom-0 p-7 text-white">
         <img src="assets/logo-white.png" alt="Империя Воздуха" class="h-9 w-auto mb-5">
@@ -757,6 +767,8 @@ tailwind.config = {
   </div>
 </dialog>
 
+<div class="cursor-ring" aria-hidden="true"></div>
+<div class="cursor-dot" aria-hidden="true"></div>
 <script src="https://unpkg.com/lucide@0.469.0/dist/umd/lucide.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.13.0/gsap.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.13.0/ScrollTrigger.min.js"></script>
@@ -862,6 +874,25 @@ tailwind.config = {
 
     // Индикатор прокрутки в шапке
     gsap.to('#scroll-progress', { scaleX: 1, ease: 'none', scrollTrigger: { start: 0, end: 'max', scrub: 0.3 } });
+
+    // Фирменный курсор — только для мыши
+    if (matchMedia('(hover: hover) and (pointer: fine)').matches) {
+      const dot = document.querySelector('.cursor-dot');
+      const ring = document.querySelector('.cursor-ring');
+      const dotX = gsap.quickTo(dot, 'x', { duration: .08, ease: 'power3' }), dotY = gsap.quickTo(dot, 'y', { duration: .08, ease: 'power3' });
+      const ringX = gsap.quickTo(ring, 'x', { duration: .45, ease: 'power3' }), ringY = gsap.quickTo(ring, 'y', { duration: .45, ease: 'power3' });
+      const interactive = 'a, button, summary, label, select, [role="button"]';
+      addEventListener('pointermove', e => {
+        if (e.pointerType !== 'mouse') return;
+        if (!root.classList.contains('has-cursor')) { gsap.set([dot, ring], { x: e.clientX, y: e.clientY }); root.classList.add('has-cursor'); }
+        root.classList.remove('cursor-out');
+        dotX(e.clientX); dotY(e.clientY); ringX(e.clientX); ringY(e.clientY);
+      }, { passive: true });
+      document.addEventListener('pointerover', e => ring.classList.toggle('is-hover', !!e.target.closest(interactive)));
+      document.addEventListener('pointerdown', () => ring.classList.add('is-down'));
+      document.addEventListener('pointerup', () => ring.classList.remove('is-down'));
+      document.documentElement.addEventListener('pointerleave', () => root.classList.add('cursor-out'));
+    }
 
     document.fonts.ready.then(() => {
       // Hero: заголовок по строкам, затем остальное
