@@ -106,16 +106,12 @@ tailwind.config = {
   html.has-cursor .cursor-ring.is-down { width: 26px; height: 26px; margin: -13px 0 0 -13px; }
   html.has-cursor body:not(.popup-open), html.has-cursor body:not(.popup-open) *:not(input):not(textarea):not(select):not(option) { cursor: none !important; }
 
-  /* Стрелки между этапами — бегущая волна */
-  .step-arrow { color: #C9CDD2; animation: step-wave 2.5s ease-in-out infinite; }
-  .steps li:nth-child(2) .step-arrow { animation-delay: .25s; }
-  .steps li:nth-child(3) .step-arrow { animation-delay: .5s; }
-  .steps li:nth-child(4) .step-arrow { animation-delay: .75s; }
-  .steps li:nth-child(5) .step-arrow { animation-delay: 1s; }
-  @keyframes step-wave {
-    0%, 55%, 100% { color: #C9CDD2; transform: translateX(0); }
-    20% { color: #4E7724; transform: translateX(5px); }
-  }
+  /* Стрелки между этапами: три шеврона по очереди загораются и «ведут» к следующему шагу */
+  .step-flow svg { width: 18px; height: 18px; stroke-width: 2.6; margin-left: -8px; opacity: .15; animation: step-flow 1.6s ease-in-out infinite; }
+  .step-flow svg:first-child { margin-left: 0; color: #8CC152; }
+  .step-flow svg:nth-child(2) { color: #6A9C34; animation-delay: .2s; }
+  .step-flow svg:nth-child(3) { color: #4E7724; animation-delay: .4s; }
+  @keyframes step-flow { 0%, 100% { opacity: .15; transform: translateX(-2px); } 40% { opacity: 1; transform: translateX(2px); } }
 
   /* Fixed-параллакс баннера: фото закреплено к окну, видно только внутри секции (работает и на iOS) */
   .sit-frame { clip-path: inset(0); }
@@ -448,31 +444,31 @@ tailwind.config = {
           <div class="flex items-center gap-3 text-brand"><i data-lucide="phone-call"></i><span class="text-[13px] font-bold text-muted tabular-nums">01</span></div>
           <div class="mt-4 font-extrabold text-ink">Заявка</div>
           <div class="mt-1.5 text-sm leading-snug text-muted">Выясняем, что беспокоит и какой результат нужен</div>
-          <i data-lucide="chevron-right" class="step-arrow ico-sm hidden lg:block absolute -right-5 top-1"></i>
+          <span class="step-flow hidden lg:flex absolute right-1 top-1 items-center" aria-hidden="true"><i data-lucide="chevron-right"></i><i data-lucide="chevron-right"></i><i data-lucide="chevron-right"></i></span>
         </li>
         <li class="relative">
           <div class="flex items-center gap-3 text-brand"><i data-lucide="map-pin"></i><span class="text-[13px] font-bold text-muted tabular-nums">02</span></div>
           <div class="mt-4 font-extrabold text-ink">Выезд на объект</div>
           <div class="mt-1.5 text-sm leading-snug text-muted">Изучаем помещения и существующие системы</div>
-          <i data-lucide="chevron-right" class="step-arrow ico-sm hidden lg:block absolute -right-5 top-1"></i>
+          <span class="step-flow hidden lg:flex absolute right-1 top-1 items-center" aria-hidden="true"><i data-lucide="chevron-right"></i><i data-lucide="chevron-right"></i><i data-lucide="chevron-right"></i></span>
         </li>
         <li class="relative">
           <div class="flex items-center gap-3 text-brand"><i data-lucide="calculator"></i><span class="text-[13px] font-bold text-muted tabular-nums">03</span></div>
           <div class="mt-4 font-extrabold text-ink">Решение и смета</div>
           <div class="mt-1.5 text-sm leading-snug text-muted">Согласуем оборудование, состав работ и стоимость</div>
-          <i data-lucide="chevron-right" class="step-arrow ico-sm hidden lg:block absolute -right-5 top-1"></i>
+          <span class="step-flow hidden lg:flex absolute right-1 top-1 items-center" aria-hidden="true"><i data-lucide="chevron-right"></i><i data-lucide="chevron-right"></i><i data-lucide="chevron-right"></i></span>
         </li>
         <li class="relative">
           <div class="flex items-center gap-3 text-brand"><i data-lucide="truck"></i><span class="text-[13px] font-bold text-muted tabular-nums">04</span></div>
           <div class="mt-4 font-extrabold text-ink">Поставка и монтаж</div>
           <div class="mt-1.5 text-sm leading-snug text-muted">Своими бригадами, по согласованному графику</div>
-          <i data-lucide="chevron-right" class="step-arrow ico-sm hidden lg:block absolute -right-5 top-1"></i>
+          <span class="step-flow hidden lg:flex absolute right-1 top-1 items-center" aria-hidden="true"><i data-lucide="chevron-right"></i><i data-lucide="chevron-right"></i><i data-lucide="chevron-right"></i></span>
         </li>
         <li class="relative">
           <div class="flex items-center gap-3 text-brand"><i data-lucide="sliders-horizontal"></i><span class="text-[13px] font-bold text-muted tabular-nums">05</span></div>
           <div class="mt-4 font-extrabold text-ink">Пусконаладка</div>
           <div class="mt-1.5 text-sm leading-snug text-muted">Настройка, проверка режимов, документация</div>
-          <i data-lucide="chevron-right" class="step-arrow ico-sm hidden lg:block absolute -right-5 top-1"></i>
+          <span class="step-flow hidden lg:flex absolute right-1 top-1 items-center" aria-hidden="true"><i data-lucide="chevron-right"></i><i data-lucide="chevron-right"></i><i data-lucide="chevron-right"></i></span>
         </li>
         <li class="relative">
           <div class="flex items-center gap-3 text-brand"><i data-lucide="wrench"></i><span class="text-[13px] font-bold text-muted tabular-nums">06</span></div>
