@@ -51,7 +51,11 @@ tailwind.config = {
   details[open] .faq-plus svg { transform: rotate(45deg); }
   .slide { opacity: 0; transition: opacity .5s ease; }
   .slide.is-active { opacity: 1; }
-  @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } .slide { transition: none; } }
+  :focus-visible { outline: 2px solid #4E7724; outline-offset: 3px; border-radius: 6px; }
+  .on-dark :focus-visible, header :focus-visible, footer :focus-visible { outline-color: #8CC152; }
+  .field:focus-visible { outline-offset: 1px; }
+  .tlink { align-self: flex-start; padding: 10px 0; margin: -10px 0; }
+  @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } *, *::before, *::after { transition: none !important; animation: none !important; } }
 </style>
 </head>
 <body class="bg-white font-sans text-body">
@@ -59,7 +63,7 @@ tailwind.config = {
 <!-- ============ HEADER ============ -->
 <header class="sticky top-0 z-40 bg-ink border-b border-edge">
   <div class="wrap flex items-center justify-between gap-6 h-[76px]">
-    <a href="#top" class="shrink-0" aria-label="Империя Воздуха — на главную">
+    <a href="#top" class="shrink-0 flex items-center min-h-11" aria-label="Империя Воздуха — на главную">
       <img src="assets/logo-white.png" alt="Империя Воздуха" class="h-10 w-auto block">
     </a>
     <nav class="hidden xl:flex items-center gap-7 text-[15px] font-semibold" aria-label="Основное меню">
@@ -71,7 +75,8 @@ tailwind.config = {
       <a href="#contacts" class="text-[#D5D8DC] hover:text-white transition-colors">Контакты</a>
     </nav>
     <div class="flex items-center gap-3">
-      <a href="tel:+70000000000" class="hidden sm:inline-flex items-center gap-2 text-white font-bold text-[15px] whitespace-nowrap hover:text-leaf transition-colors">
+      <a href="tel:+70000000000" aria-label="Позвонить" class="sm:hidden inline-flex w-11 h-11 rounded-[10px] border border-[#3A3F46] text-leaf items-center justify-center"><i data-lucide="phone" class="ico-sm"></i></a>
+      <a href="tel:+70000000000" class="hidden sm:inline-flex items-center gap-2 min-h-11 text-white font-bold text-[15px] whitespace-nowrap hover:text-leaf transition-colors">
         <i data-lucide="phone" class="ico-sm text-leaf"></i>[+7 ТЕЛЕФОН]
       </a>
       <a href="#" aria-label="Написать в WhatsApp" class="hidden sm:inline-flex w-11 h-11 rounded-[10px] border border-[#3A3F46] items-center justify-center hover:border-leaf transition-colors">
@@ -91,7 +96,7 @@ tailwind.config = {
       <a href="#equipment" class="py-3 text-[#D5D8DC] border-b border-edge">Оборудование</a>
       <a href="#about" class="py-3 text-[#D5D8DC] border-b border-edge">О компании</a>
       <a href="#contacts" class="py-3 text-[#D5D8DC]">Контакты</a>
-      <a href="tel:+70000000000" class="mt-3 text-white font-bold">[+7 ТЕЛЕФОН]</a>
+      <a href="tel:+70000000000" class="mt-2 py-3 text-white font-bold">[+7 ТЕЛЕФОН]</a>
       <a href="#calc" class="mt-4 inline-flex items-center justify-center h-12 rounded-[10px] bg-brand text-white font-bold">Получить расчёт</a>
     </div>
   </nav>
@@ -112,18 +117,18 @@ tailwind.config = {
           <a href="#calc" class="inline-flex items-center gap-2.5 h-[52px] px-6 rounded-xl bg-brand hover:bg-brand-dark text-white font-bold transition-colors">Получить расчёт стоимости<i data-lucide="arrow-right" class="ico-sm"></i></a>
           <a href="#service" class="inline-flex items-center h-[52px] px-6 rounded-xl border-[1.5px] border-[#5A6068] hover:border-white text-white font-bold transition-colors">Заказать сервисное обслуживание</a>
         </div>
-        <dl class="grid grid-cols-2 sm:grid-cols-4 gap-y-5 mt-6 pt-7 border-t border-edge">
-          <div class="pr-4"><dt class="text-xl font-extrabold whitespace-nowrap">с 2021</dt><dd class="text-[13px] leading-snug text-[#AEB3BA] mt-1">на рынке Казахстана</dd></div>
-          <div class="pr-4 sm:border-l sm:border-edge sm:pl-5"><dt class="text-xl font-extrabold whitespace-nowrap">2 лицензии</dt><dd class="text-[13px] leading-snug text-[#AEB3BA] mt-1">проектирование и СМР</dd></div>
-          <div class="pr-4 sm:border-l sm:border-edge sm:pl-5"><dt class="text-xl font-extrabold whitespace-nowrap">12 мес.</dt><dd class="text-[13px] leading-snug text-[#AEB3BA] mt-1">гарантия на оборудование</dd></div>
-          <div class="sm:border-l sm:border-edge sm:pl-5"><dt class="text-xl font-extrabold whitespace-nowrap">20+</dt><dd class="text-[13px] leading-snug text-[#AEB3BA] mt-1">объектов в портфолио</dd></div>
+        <dl class="grid grid-cols-2 xl:grid-cols-4 gap-y-5 mt-6 pt-7 border-t border-edge">
+          <div class="pr-4"><dt class="text-xl font-extrabold whitespace-nowrap">с 2021</dt><dd class="text-sm leading-snug text-[#AEB3BA] mt-1">на рынке Казахстана</dd></div>
+          <div class="pl-5 border-l border-edge"><dt class="text-xl font-extrabold whitespace-nowrap">2 лицензии</dt><dd class="text-sm leading-snug text-[#AEB3BA] mt-1">проектирование и СМР</dd></div>
+          <div class="pr-4 xl:pl-5 xl:border-l xl:border-edge"><dt class="text-xl font-extrabold whitespace-nowrap">12 мес.</dt><dd class="text-sm leading-snug text-[#AEB3BA] mt-1">гарантия на оборудование</dd></div>
+          <div class="pl-5 border-l border-edge"><dt class="text-xl font-extrabold whitespace-nowrap">20+</dt><dd class="text-sm leading-snug text-[#AEB3BA] mt-1">объектов в портфолио</dd></div>
         </dl>
       </div>
     </div>
     <div class="relative min-h-[300px] sm:min-h-[420px]">
-      <img src="assets/zhuldyz.jpg" alt="Ресторан «Жулдыз», ГК «Космонавт», Караганда — объект компании" class="absolute inset-0 w-full h-full object-cover">
+      <img src="assets/zhuldyz.jpg" alt="Ресторан «Жулдыз», ГК «Космонавт», Караганда — объект компании" class="absolute inset-0 w-full h-full object-cover" fetchpriority="high">
       <div class="absolute inset-0 bg-gradient-to-r from-ink/40 to-transparent lg:from-ink/60 lg:via-transparent"></div>
-      <div class="absolute right-4 bottom-4 sm:right-6 sm:bottom-6 bg-ink/90 rounded-[10px] px-4 py-3 text-[13px] leading-snug text-white">
+      <div class="absolute right-4 bottom-4 sm:right-6 sm:bottom-6 bg-ink/90 rounded-[10px] px-4 py-3 text-sm leading-snug text-white">
         <span class="text-leaf font-bold">Объект:</span> ресторан «Жулдыз»,<br>ГК «Космонавт», Караганда
       </div>
     </div>
@@ -140,26 +145,26 @@ tailwind.config = {
       </div>
       <div class="lg:col-span-5 lg:pl-8">
         <p class="m-0 text-base leading-relaxed text-muted">Один подрядчик отвечает за все этапы. Нет нестыковок между поставщиком, монтажниками и наладчиками.</p>
-        <a href="#services" class="inline-flex items-center gap-2 mt-4 font-bold text-brand hover:text-brand-dark">Все услуги<i data-lucide="arrow-right" class="ico-sm"></i></a>
+        <a href="#services" class="tlink inline-flex items-center gap-2 mt-4 font-bold text-brand hover:text-brand-dark">Все услуги<i data-lucide="arrow-right" class="ico-sm"></i></a>
       </div>
     </div>
     <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-4">
-      <article class="bg-soft rounded-2xl p-7 flex flex-col gap-3 border border-transparent hover:border-line hover:bg-white transition-colors">
+      <article class="bg-soft rounded-2xl p-7 flex flex-col gap-3">
         <div class="flex items-center justify-between text-brand"><i data-lucide="truck"></i><span class="text-[13px] font-bold text-muted">01</span></div>
         <h3 class="mt-5 mb-0 text-lg font-extrabold text-ink">Поставка оборудования</h3>
         <p class="m-0 text-[15px] leading-relaxed text-muted">Подбор под объект, микроклимат, режим эксплуатации и бюджет заказчика.</p>
       </article>
-      <article class="bg-soft rounded-2xl p-7 flex flex-col gap-3 border border-transparent hover:border-line hover:bg-white transition-colors">
+      <article class="bg-soft rounded-2xl p-7 flex flex-col gap-3">
         <div class="flex items-center justify-between text-brand"><i data-lucide="hard-hat"></i><span class="text-[13px] font-bold text-muted">02</span></div>
         <h3 class="mt-5 mb-0 text-lg font-extrabold text-ink">Монтаж</h3>
         <p class="m-0 text-[15px] leading-relaxed text-muted">Штатные монтажники вентиляции, кондиционирования и VRF-систем.</p>
       </article>
-      <article class="bg-soft rounded-2xl p-7 flex flex-col gap-3 border border-transparent hover:border-line hover:bg-white transition-colors">
+      <article class="bg-soft rounded-2xl p-7 flex flex-col gap-3">
         <div class="flex items-center justify-between text-brand"><i data-lucide="sliders-horizontal"></i><span class="text-[13px] font-bold text-muted">03</span></div>
         <h3 class="mt-5 mb-0 text-lg font-extrabold text-ink">Пусконаладка</h3>
         <p class="m-0 text-[15px] leading-relaxed text-muted">Настройка параметров, автоматики и воздушных потоков, документация.</p>
       </article>
-      <article class="bg-soft rounded-2xl p-7 flex flex-col gap-3 border border-transparent hover:border-line hover:bg-white transition-colors">
+      <article class="bg-soft rounded-2xl p-7 flex flex-col gap-3">
         <div class="flex items-center justify-between text-brand"><i data-lucide="shield-check"></i><span class="text-[13px] font-bold text-muted">04</span></div>
         <h3 class="mt-5 mb-0 text-lg font-extrabold text-ink">Сервисное обслуживание</h3>
         <p class="m-0 text-[15px] leading-relaxed text-muted">Плановое ТО, диагностика и сопровождение после окончания гарантии.</p>
@@ -173,24 +178,24 @@ tailwind.config = {
   <div class="wrap">
     <div class="eyebrow">Ваш объект — ваша задача</div>
     <h2 class="h2 m-0 mb-10 text-ink max-w-[760px]">С какой ситуацией вы обращаетесь?</h2>
-    <div class="grid md:grid-cols-3 gap-4">
-      <article class="bg-white rounded-2xl p-7 flex flex-col gap-3 border border-line hover:border-brand/40 hover:shadow-[0_12px_32px_-16px_rgba(30,33,38,.25)] transition">
+    <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
+      <article class="bg-white rounded-2xl p-7 flex flex-col gap-3 border border-line">
         <span class="w-12 h-12 rounded-xl bg-soft text-brand inline-flex items-center justify-center"><i data-lucide="thermometer-sun"></i></span>
         <h3 class="mt-3 mb-0 text-lg font-extrabold text-ink">В помещении некомфортно</h3>
         <p class="m-0 text-[15px] leading-relaxed text-muted grow">Разбираемся, почему душно, жарко или холодно, откуда появляются запахи и что мешает нормальной работе.</p>
-        <a href="#calc" class="inline-flex items-center gap-2 font-bold text-[15px] text-brand hover:text-brand-dark">Вызвать инженера<i data-lucide="arrow-right" class="ico-sm"></i></a>
+        <a href="#calc" class="tlink inline-flex items-center gap-2 font-bold text-[15px] text-brand hover:text-brand-dark">Вызвать инженера<i data-lucide="arrow-right" class="ico-sm"></i></a>
       </article>
-      <article class="bg-white rounded-2xl p-7 flex flex-col gap-3 border border-line hover:border-brand/40 hover:shadow-[0_12px_32px_-16px_rgba(30,33,38,.25)] transition">
+      <article class="bg-white rounded-2xl p-7 flex flex-col gap-3 border border-line">
         <span class="w-12 h-12 rounded-xl bg-soft text-brand inline-flex items-center justify-center"><i data-lucide="building-2"></i></span>
         <h3 class="mt-3 mb-0 text-lg font-extrabold text-ink">Открытие или реконструкция</h3>
         <p class="m-0 text-[15px] leading-relaxed text-muted grow">Подбираем решение с учётом назначения помещений, существующих систем, бюджета и сроков заказчика.</p>
-        <a href="#calc" class="inline-flex items-center gap-2 font-bold text-[15px] text-brand hover:text-brand-dark">Получить расчёт<i data-lucide="arrow-right" class="ico-sm"></i></a>
+        <a href="#calc" class="tlink inline-flex items-center gap-2 font-bold text-[15px] text-brand hover:text-brand-dark">Получить расчёт<i data-lucide="arrow-right" class="ico-sm"></i></a>
       </article>
-      <article class="bg-white rounded-2xl p-7 flex flex-col gap-3 border border-line hover:border-brand/40 hover:shadow-[0_12px_32px_-16px_rgba(30,33,38,.25)] transition">
+      <article class="bg-white rounded-2xl p-7 flex flex-col gap-3 border border-line">
         <span class="w-12 h-12 rounded-xl bg-soft text-brand inline-flex items-center justify-center"><i data-lucide="triangle-alert"></i></span>
         <h3 class="mt-3 mb-0 text-lg font-extrabold text-ink">Оборудование даёт сбои</h3>
         <p class="m-0 text-[15px] leading-relaxed text-muted grow">Проводим диагностику, определяем необходимые работы и согласовываем ремонт или модернизацию.</p>
-        <a href="#service" class="inline-flex items-center gap-2 font-bold text-[15px] text-brand hover:text-brand-dark">Заказать диагностику<i data-lucide="arrow-right" class="ico-sm"></i></a>
+        <a href="#service" class="tlink inline-flex items-center gap-2 font-bold text-[15px] text-brand hover:text-brand-dark">Заказать диагностику<i data-lucide="arrow-right" class="ico-sm"></i></a>
       </article>
     </div>
   </div>
@@ -204,44 +209,44 @@ tailwind.config = {
         <div class="eyebrow">Услуги</div>
         <h2 class="h2 m-0 text-ink">Что мы делаем</h2>
       </div>
-      <a href="#calc" class="inline-flex items-center gap-2 font-bold text-brand hover:text-brand-dark">Рассчитать стоимость работ<i data-lucide="arrow-right" class="ico-sm"></i></a>
+      <a href="#calc" class="tlink inline-flex items-center gap-2 font-bold text-brand hover:text-brand-dark">Рассчитать стоимость работ<i data-lucide="arrow-right" class="ico-sm"></i></a>
     </div>
-    <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-4">
-      <article class="rounded-2xl border border-line p-6 flex flex-col gap-3 hover:border-brand/40 hover:shadow-[0_12px_32px_-16px_rgba(30,33,38,.25)] transition">
+    <div class="grid sm:grid-cols-2 xl:grid-cols-4 gap-4">
+      <article class="rounded-2xl border border-line p-6 flex flex-col gap-3">
         <i data-lucide="fan" class="text-brand"></i>
         <h3 class="mt-2 mb-0 text-[17px] font-extrabold text-ink">Вентиляционные системы</h3>
-        <ul class="m-0 pl-4 list-disc marker:text-leaf text-sm leading-relaxed text-muted"><li>Приточные и вытяжные системы</li><li>Вентиляционные установки и воздуховоды</li><li>Водяные и электрические калориферы</li><li>Подключение автоматики</li></ul>
+        <ul class="m-0 pl-4 list-disc marker:text-leaf text-[15px] leading-relaxed text-muted"><li>Приточные и вытяжные системы</li><li>Вентиляционные установки и воздуховоды</li><li>Водяные и электрические калориферы</li><li>Подключение автоматики</li></ul>
       </article>
-      <article class="rounded-2xl border border-line p-6 flex flex-col gap-3 hover:border-brand/40 hover:shadow-[0_12px_32px_-16px_rgba(30,33,38,.25)] transition">
+      <article class="rounded-2xl border border-line p-6 flex flex-col gap-3">
         <i data-lucide="snowflake" class="text-brand"></i>
         <h3 class="mt-2 mb-0 text-[17px] font-extrabold text-ink">Системы кондиционирования</h3>
-        <ul class="m-0 pl-4 list-disc marker:text-leaf text-sm leading-relaxed text-muted"><li>Сплит-, настенные системы</li><li>Канальные и кассетные кондиционеры</li><li>Фреоновые трассы и дренаж</li><li>Подключение и настройка</li></ul>
+        <ul class="m-0 pl-4 list-disc marker:text-leaf text-[15px] leading-relaxed text-muted"><li>Сплит-, настенные системы</li><li>Канальные и кассетные кондиционеры</li><li>Фреоновые трассы и дренаж</li><li>Подключение и настройка</li></ul>
       </article>
-      <article class="rounded-2xl border border-line p-6 flex flex-col gap-3 hover:border-brand/40 hover:shadow-[0_12px_32px_-16px_rgba(30,33,38,.25)] transition">
+      <article class="rounded-2xl border border-line p-6 flex flex-col gap-3">
         <i data-lucide="air-vent" class="text-brand"></i>
         <h3 class="mt-2 mb-0 text-[17px] font-extrabold text-ink">VRF/VRV-системы</h3>
-        <ul class="m-0 pl-4 list-disc marker:text-leaf text-sm leading-relaxed text-muted"><li>Подбор для коммерческих зданий</li><li>Наружные и внутренние блоки, разветвители</li><li>Вакуумирование, проверка герметичности</li><li>Настройка систем управления</li></ul>
+        <ul class="m-0 pl-4 list-disc marker:text-leaf text-[15px] leading-relaxed text-muted"><li>Подбор для коммерческих зданий</li><li>Наружные и внутренние блоки, разветвители</li><li>Вакуумирование, проверка герметичности</li><li>Настройка систем управления</li></ul>
       </article>
-      <article class="rounded-2xl border border-line p-6 flex flex-col gap-3 hover:border-brand/40 hover:shadow-[0_12px_32px_-16px_rgba(30,33,38,.25)] transition">
+      <article class="rounded-2xl border border-line p-6 flex flex-col gap-3">
         <i data-lucide="gauge" class="text-brand"></i>
         <h3 class="mt-2 mb-0 text-[17px] font-extrabold text-ink">Пусконаладочные работы</h3>
-        <ul class="m-0 pl-4 list-disc marker:text-leaf text-sm leading-relaxed text-muted"><li>Проверка монтажа и электрики</li><li>Настройка автоматики и параметров</li><li>Балансировка воздушных потоков</li><li>Техническая документация</li></ul>
+        <ul class="m-0 pl-4 list-disc marker:text-leaf text-[15px] leading-relaxed text-muted"><li>Проверка монтажа и электрики</li><li>Настройка автоматики и параметров</li><li>Балансировка воздушных потоков</li><li>Техническая документация</li></ul>
       </article>
-      <article class="rounded-2xl border border-line p-6 flex flex-col gap-3 hover:border-brand/40 hover:shadow-[0_12px_32px_-16px_rgba(30,33,38,.25)] transition">
+      <article class="rounded-2xl border border-line p-6 flex flex-col gap-3">
         <i data-lucide="settings-2" class="text-brand"></i>
         <h3 class="mt-2 mb-0 text-[17px] font-extrabold text-ink">Техническое обслуживание</h3>
-        <ul class="m-0 pl-4 list-disc marker:text-leaf text-sm leading-relaxed text-muted"><li>Плановое ТО вентустановок</li><li>Фильтры, теплообменники, клапаны</li><li>Двигатели, подшипники, ремни</li><li>ТО кондиционеров и VRF/VRV</li></ul>
+        <ul class="m-0 pl-4 list-disc marker:text-leaf text-[15px] leading-relaxed text-muted"><li>Плановое ТО вентустановок</li><li>Фильтры, теплообменники, клапаны</li><li>Двигатели, подшипники, ремни</li><li>ТО кондиционеров и VRF/VRV</li></ul>
       </article>
-      <article class="rounded-2xl border border-line p-6 flex flex-col gap-3 hover:border-brand/40 hover:shadow-[0_12px_32px_-16px_rgba(30,33,38,.25)] transition">
+      <article class="rounded-2xl border border-line p-6 flex flex-col gap-3">
         <i data-lucide="wrench" class="text-brand"></i>
         <h3 class="mt-2 mb-0 text-[17px] font-extrabold text-ink">Ремонт и диагностика</h3>
-        <ul class="m-0 pl-4 list-disc marker:text-leaf text-sm leading-relaxed text-muted"><li>Поиск причин отказа</li><li>Замена узлов и компонентов</li><li>Ремонт элементов автоматики</li><li>Демонтаж и модернизация</li></ul>
+        <ul class="m-0 pl-4 list-disc marker:text-leaf text-[15px] leading-relaxed text-muted"><li>Поиск причин отказа</li><li>Замена узлов и компонентов</li><li>Ремонт элементов автоматики</li><li>Демонтаж и модернизация</li></ul>
       </article>
       <article class="rounded-2xl bg-ink text-white p-6 flex flex-col gap-3">
         <i data-lucide="package" class="text-leaf"></i>
         <h3 class="mt-2 mb-0 text-[17px] font-extrabold">Поставка оборудования</h3>
         <p class="m-0 text-sm leading-relaxed text-[#C2C6CC] grow">Подберём оборудование под технические требования объекта и бюджет — с монтажом или без.</p>
-        <a href="#equipment" class="inline-flex items-center gap-2 text-leaf hover:text-white font-bold text-[15px] transition-colors">Запросить подбор<i data-lucide="arrow-right" class="ico-sm"></i></a>
+        <a href="#equipment" class="tlink inline-flex items-center gap-2 text-leaf hover:text-white font-bold text-[15px] transition-colors">Запросить подбор<i data-lucide="arrow-right" class="ico-sm"></i></a>
       </article>
       <article class="relative rounded-2xl overflow-hidden min-h-[260px] text-white flex">
         <img src="assets/absolut.jpg" alt="" class="absolute inset-0 w-full h-full object-cover">
@@ -286,9 +291,9 @@ tailwind.config = {
         </figure>
         <button type="button" data-dir="-1" aria-label="Предыдущий объект" class="absolute left-4 top-1/2 -translate-y-1/2 w-11 h-11 rounded-full bg-ink/80 hover:bg-brand text-white inline-flex items-center justify-center cursor-pointer transition-colors"><i data-lucide="chevron-left"></i></button>
         <button type="button" data-dir="1" aria-label="Следующий объект" class="absolute right-4 top-1/2 -translate-y-1/2 w-11 h-11 rounded-full bg-ink/80 hover:bg-brand text-white inline-flex items-center justify-center cursor-pointer transition-colors"><i data-lucide="chevron-right"></i></button>
-        <div class="absolute left-4 bottom-4 bg-ink/85 rounded-lg px-3 py-1.5 text-[13px] font-bold tabular-nums"><span id="slide-num" class="text-leaf">01</span> / <span id="slide-total">04</span></div>
+        <div class="absolute left-4 bottom-4 bg-ink/85 rounded-lg px-3 py-1.5 text-sm font-bold tabular-nums"><span id="slide-num" class="text-leaf">01</span> / <span id="slide-total">04</span></div>
       </div>
-      <p id="slide-caption" class="mt-3 mb-0 text-[13px] text-[#AEB3BA]" aria-live="polite">Grand Store, Караганда — участие в реконструкции отдельных инженерных систем</p>
+      <p id="slide-caption" class="mt-3 mb-0 text-sm text-[#AEB3BA]" aria-live="polite">Grand Store, Караганда — участие в реконструкции отдельных инженерных систем</p>
     </div>
   </div>
 </section>
@@ -313,7 +318,7 @@ tailwind.config = {
       <div class="lg:col-span-4 flex flex-col gap-4">
         <div class="bg-ink text-white rounded-2xl p-7 flex flex-col gap-3">
           <span class="w-11 h-11 rounded-xl bg-brand inline-flex items-center justify-center"><i data-lucide="clipboard-check"></i></span>
-          <div class="text-[13px] font-bold text-leaf mt-2">Рекомендуем</div>
+          <div class="text-sm font-bold text-leaf mt-2">Рекомендуем</div>
           <h3 class="m-0 text-xl font-extrabold">Договор на регулярный сервис</h3>
           <p class="m-0 text-sm leading-relaxed text-[#C2C6CC]">Плановое ТО по регламенту производителя. Расходы на обслуживание предсказуемы, неисправности выявляются на ранней стадии.</p>
           <a href="#calc" class="mt-2 inline-flex items-center justify-center gap-2 min-h-12 py-3 px-4 text-center leading-snug rounded-[10px] bg-brand hover:bg-brand-dark font-bold text-[15px] transition-colors">Заказать сервисное обслуживание<i data-lucide="arrow-right" class="ico-sm"></i></a>
@@ -321,7 +326,7 @@ tailwind.config = {
         <div class="border border-line rounded-2xl p-6 flex flex-col gap-2">
           <h3 class="m-0 text-lg font-extrabold text-ink">Разовое обслуживание</h3>
           <p class="m-0 text-sm leading-relaxed text-muted">Диагностика, ремонт, чистка или подготовка к сезону по вашей заявке. Состав работ и стоимость согласуем до начала.</p>
-          <a href="#calc" class="mt-1 inline-flex items-center gap-2 font-bold text-[15px] text-brand hover:text-brand-dark">Оставить заявку<i data-lucide="arrow-right" class="ico-sm"></i></a>
+          <a href="#calc" class="tlink mt-1 inline-flex items-center gap-2 font-bold text-[15px] text-brand hover:text-brand-dark">Оставить заявку<i data-lucide="arrow-right" class="ico-sm"></i></a>
         </div>
       </div>
     </div>
@@ -382,48 +387,48 @@ tailwind.config = {
     </div>
 
     <div id="filters" class="flex flex-wrap gap-2 mb-8" role="group" aria-label="Фильтр объектов">
-      <button type="button" data-filter="all" aria-pressed="true" class="px-4 py-2 rounded-full text-sm font-semibold border cursor-pointer transition-colors">Все объекты</button>
-      <button type="button" data-filter="rest" aria-pressed="false" class="px-4 py-2 rounded-full text-sm font-semibold border cursor-pointer transition-colors">Рестораны и гостиницы</button>
-      <button type="button" data-filter="retail" aria-pressed="false" class="px-4 py-2 rounded-full text-sm font-semibold border cursor-pointer transition-colors">Торговля и ритейл</button>
-      <button type="button" data-filter="leisure" aria-pressed="false" class="px-4 py-2 rounded-full text-sm font-semibold border cursor-pointer transition-colors">Фитнес, спа и досуг</button>
+      <button type="button" data-filter="all" aria-pressed="true" class="min-h-11 px-4 rounded-full text-sm font-semibold border cursor-pointer transition-colors">Все объекты</button>
+      <button type="button" data-filter="rest" aria-pressed="false" class="min-h-11 px-4 rounded-full text-sm font-semibold border cursor-pointer transition-colors">Рестораны и гостиницы</button>
+      <button type="button" data-filter="retail" aria-pressed="false" class="min-h-11 px-4 rounded-full text-sm font-semibold border cursor-pointer transition-colors">Торговля и ритейл</button>
+      <button type="button" data-filter="leisure" aria-pressed="false" class="min-h-11 px-4 rounded-full text-sm font-semibold border cursor-pointer transition-colors">Фитнес, спа и досуг</button>
     </div>
 
-    <div id="projects-grid" class="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
-      <article data-cat="rest" class="group bg-white rounded-2xl overflow-hidden border border-line">
-        <div class="h-56 overflow-hidden"><img src="assets/cosmo-garden.jpg" alt="Банкетный зал Cosmo Garden, ГК «Космонавт», Караганда" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" loading="lazy"></div>
-        <div class="px-5 py-4"><div class="font-extrabold text-ink">Cosmo Garden, ГК «Космонавт»</div><div class="text-[13px] text-muted mt-1">Гостиничный комплекс · Караганда</div></div>
+    <div id="projects-grid" class="grid sm:grid-cols-2 md:grid-cols-3 gap-5">
+      <article data-cat="rest" class="bg-white rounded-2xl overflow-hidden border border-line">
+        <div class="h-56 overflow-hidden"><img src="assets/cosmo-garden.jpg" alt="Банкетный зал Cosmo Garden, ГК «Космонавт», Караганда" class="w-full h-full object-cover" loading="lazy"></div>
+        <div class="px-5 py-4"><div class="font-extrabold text-ink">Cosmo Garden, ГК «Космонавт»</div><div class="text-sm text-muted mt-1">Гостиничный комплекс · Караганда</div></div>
       </article>
-      <article data-cat="rest" class="group bg-white rounded-2xl overflow-hidden border border-line">
-        <div class="h-56 overflow-hidden"><img src="assets/zhuldyz.jpg" alt="Ресторан «Жулдыз», ГК «Космонавт», Караганда" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" loading="lazy"></div>
-        <div class="px-5 py-4"><div class="font-extrabold text-ink">Ресторан «Жулдыз»</div><div class="text-[13px] text-muted mt-1">ГК «Космонавт» · Караганда</div></div>
+      <article data-cat="rest" class="bg-white rounded-2xl overflow-hidden border border-line">
+        <div class="h-56 overflow-hidden"><img src="assets/zhuldyz.jpg" alt="Ресторан «Жулдыз», ГК «Космонавт», Караганда" class="w-full h-full object-cover" loading="lazy"></div>
+        <div class="px-5 py-4"><div class="font-extrabold text-ink">Ресторан «Жулдыз»</div><div class="text-sm text-muted mt-1">ГК «Космонавт» · Караганда</div></div>
       </article>
-      <article data-cat="rest" class="group bg-white rounded-2xl overflow-hidden border border-line">
-        <div class="h-56 overflow-hidden"><img src="assets/arista.jpg" alt="Интерьер лаунж-бара «Ариста», Караганда" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" loading="lazy"></div>
-        <div class="px-5 py-4"><div class="font-extrabold text-ink">«Ариста»</div><div class="text-[13px] text-muted mt-1">Лаунж-бар · Караганда</div></div>
+      <article data-cat="rest" class="bg-white rounded-2xl overflow-hidden border border-line">
+        <div class="h-56 overflow-hidden"><img src="assets/arista.jpg" alt="Интерьер лаунж-бара «Ариста», Караганда" class="w-full h-full object-cover" loading="lazy"></div>
+        <div class="px-5 py-4"><div class="font-extrabold text-ink">«Ариста»</div><div class="text-sm text-muted mt-1">Лаунж-бар · Караганда</div></div>
       </article>
-      <article data-cat="retail" class="group bg-white rounded-2xl overflow-hidden border border-line">
-        <div class="h-56 overflow-hidden"><img src="assets/absolut.jpg" alt="Торговый дом «Абсолют», Караганда" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" loading="lazy"></div>
-        <div class="px-5 py-4"><div class="font-extrabold text-ink">Торговый дом «Абсолют»</div><div class="text-[13px] text-muted mt-1">Реконструкция · Караганда</div></div>
+      <article data-cat="retail" class="bg-white rounded-2xl overflow-hidden border border-line">
+        <div class="h-56 overflow-hidden"><img src="assets/absolut.jpg" alt="Торговый дом «Абсолют», Караганда" class="w-full h-full object-cover" loading="lazy"></div>
+        <div class="px-5 py-4"><div class="font-extrabold text-ink">Торговый дом «Абсолют»</div><div class="text-sm text-muted mt-1">Реконструкция · Караганда</div></div>
       </article>
-      <article data-cat="retail" class="group bg-white rounded-2xl overflow-hidden border border-line">
-        <div class="h-56 overflow-hidden"><img src="assets/grand-store.jpg" alt="ТРЦ Grand Store, Караганда" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" loading="lazy"></div>
-        <div class="px-5 py-4"><div class="font-extrabold text-ink">Grand Store</div><div class="text-[13px] text-muted mt-1">Реконструкция отдельных систем · Караганда</div></div>
+      <article data-cat="retail" class="bg-white rounded-2xl overflow-hidden border border-line">
+        <div class="h-56 overflow-hidden"><img src="assets/grand-store.jpg" alt="ТРЦ Grand Store, Караганда" class="w-full h-full object-cover" loading="lazy"></div>
+        <div class="px-5 py-4"><div class="font-extrabold text-ink">Grand Store</div><div class="text-sm text-muted mt-1">Реконструкция отдельных систем · Караганда</div></div>
       </article>
-      <article data-cat="retail" class="group bg-white rounded-2xl overflow-hidden border border-line">
-        <div class="h-56 overflow-hidden"><img src="assets/optima.jpg" alt="Супермаркет сети «Оптима», Караганда" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" loading="lazy"></div>
-        <div class="px-5 py-4"><div class="font-extrabold text-ink">Сеть магазинов «Оптима»</div><div class="text-[13px] text-muted mt-1">5 супермаркетов · Караганда</div></div>
+      <article data-cat="retail" class="bg-white rounded-2xl overflow-hidden border border-line">
+        <div class="h-56 overflow-hidden"><img src="assets/optima.jpg" alt="Супермаркет сети «Оптима», Караганда" class="w-full h-full object-cover" loading="lazy"></div>
+        <div class="px-5 py-4"><div class="font-extrabold text-ink">Сеть магазинов «Оптима»</div><div class="text-sm text-muted mt-1">5 супермаркетов · Караганда</div></div>
       </article>
-      <article data-cat="leisure" class="group bg-white rounded-2xl overflow-hidden border border-line">
-        <div class="h-56 overflow-hidden"><img src="assets/invictus.jpg" alt="Тренажёрный зал Invictus Fitness, Темиртау" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" loading="lazy"></div>
-        <div class="px-5 py-4"><div class="font-extrabold text-ink">Invictus Fitness</div><div class="text-[13px] text-muted mt-1">Премиальный фитнес-клуб · Темиртау</div></div>
+      <article data-cat="leisure" class="bg-white rounded-2xl overflow-hidden border border-line">
+        <div class="h-56 overflow-hidden"><img src="assets/invictus.jpg" alt="Тренажёрный зал Invictus Fitness, Темиртау" class="w-full h-full object-cover" loading="lazy"></div>
+        <div class="px-5 py-4"><div class="font-extrabold text-ink">Invictus Fitness</div><div class="text-sm text-muted mt-1">Премиальный фитнес-клуб · Темиртау</div></div>
       </article>
-      <article data-cat="leisure" class="group bg-white rounded-2xl overflow-hidden border border-line">
-        <div class="h-56 overflow-hidden"><img src="assets/kyoto-spa.jpg" alt="Интерьер Kyoto Spa, Караганда" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" loading="lazy"></div>
-        <div class="px-5 py-4"><div class="font-extrabold text-ink">Kyoto Spa</div><div class="text-[13px] text-muted mt-1">Спа-салон · Караганда</div></div>
+      <article data-cat="leisure" class="bg-white rounded-2xl overflow-hidden border border-line">
+        <div class="h-56 overflow-hidden"><img src="assets/kyoto-spa.jpg" alt="Интерьер Kyoto Spa, Караганда" class="w-full h-full object-cover" loading="lazy"></div>
+        <div class="px-5 py-4"><div class="font-extrabold text-ink">Kyoto Spa</div><div class="text-sm text-muted mt-1">Спа-салон · Караганда</div></div>
       </article>
-      <article data-cat="leisure" class="group bg-white rounded-2xl overflow-hidden border border-line">
-        <div class="h-56 overflow-hidden"><img src="assets/my-kids.jpg" alt="Детский развлекательный центр My Kids, Темиртау" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" loading="lazy"></div>
-        <div class="px-5 py-4"><div class="font-extrabold text-ink">My Kids</div><div class="text-[13px] text-muted mt-1">Детский центр · Темиртау</div></div>
+      <article data-cat="leisure" class="bg-white rounded-2xl overflow-hidden border border-line">
+        <div class="h-56 overflow-hidden"><img src="assets/my-kids.jpg" alt="Детский развлекательный центр My Kids, Темиртау" class="w-full h-full object-cover" loading="lazy"></div>
+        <div class="px-5 py-4"><div class="font-extrabold text-ink">My Kids</div><div class="text-sm text-muted mt-1">Детский центр · Темиртау</div></div>
       </article>
     </div>
 
@@ -453,12 +458,12 @@ tailwind.config = {
       </div>
       <div class="text-sm font-bold text-muted mb-3">Работаем с брендами</div>
       <div class="grid grid-cols-3 sm:grid-cols-6 gap-2.5">
-        <div class="h-16 border border-dashed border-[#C9CDD2] rounded-[10px] flex items-center justify-center text-[#6B7078] text-[13px]">[Бренд 1]</div>
-        <div class="h-16 border border-dashed border-[#C9CDD2] rounded-[10px] flex items-center justify-center text-[#6B7078] text-[13px]">[Бренд 2]</div>
-        <div class="h-16 border border-dashed border-[#C9CDD2] rounded-[10px] flex items-center justify-center text-[#6B7078] text-[13px]">[Бренд 3]</div>
-        <div class="h-16 border border-dashed border-[#C9CDD2] rounded-[10px] flex items-center justify-center text-[#6B7078] text-[13px]">[Бренд 4]</div>
-        <div class="h-16 border border-dashed border-[#C9CDD2] rounded-[10px] flex items-center justify-center text-[#6B7078] text-[13px]">[Бренд 5]</div>
-        <div class="h-16 border border-dashed border-[#C9CDD2] rounded-[10px] flex items-center justify-center text-[#6B7078] text-[13px]">[Бренд 6]</div>
+        <div class="h-16 border border-dashed border-[#C9CDD2] rounded-[10px] flex items-center justify-center text-[#6B7078] text-sm">[Бренд 1]</div>
+        <div class="h-16 border border-dashed border-[#C9CDD2] rounded-[10px] flex items-center justify-center text-[#6B7078] text-sm">[Бренд 2]</div>
+        <div class="h-16 border border-dashed border-[#C9CDD2] rounded-[10px] flex items-center justify-center text-[#6B7078] text-sm">[Бренд 3]</div>
+        <div class="h-16 border border-dashed border-[#C9CDD2] rounded-[10px] flex items-center justify-center text-[#6B7078] text-sm">[Бренд 4]</div>
+        <div class="h-16 border border-dashed border-[#C9CDD2] rounded-[10px] flex items-center justify-center text-[#6B7078] text-sm">[Бренд 5]</div>
+        <div class="h-16 border border-dashed border-[#C9CDD2] rounded-[10px] flex items-center justify-center text-[#6B7078] text-sm">[Бренд 6]</div>
       </div>
     </div>
     <form class="js-form lg:col-span-5 self-start bg-soft rounded-2xl p-7 sm:p-8 flex flex-col gap-4" action="#" method="post">
@@ -468,10 +473,11 @@ tailwind.config = {
         <span class="relative"><select class="field"><option>Вентиляционная установка</option><option>Кондиционеры</option><option>VRF/VRV-система</option><option>Другое</option></select><i data-lucide="chevron-down" class="ico-sm absolute right-3 top-1/2 -translate-y-1/2 pointer-events-none text-muted"></i></span>
       </label>
       <label class="flex flex-col gap-1.5 text-sm font-bold">Параметры объекта<input type="text" class="field" placeholder="Тип помещения, площадь, м²"></label>
-      <div class="grid sm:grid-cols-2 gap-3">
+      <div class="grid sm:grid-cols-2 lg:grid-cols-1 xl:grid-cols-2 gap-3">
         <label class="flex flex-col gap-1.5 text-sm font-bold">Имя<input type="text" class="field" placeholder="Как к вам обращаться" autocomplete="name"></label>
         <label class="flex flex-col gap-1.5 text-sm font-bold">Телефон<input type="tel" class="field" placeholder="+7 (___) ___-__-__" autocomplete="tel"></label>
       </div>
+      <p class="form-done hidden m-0 text-[15px] font-semibold text-brand" role="status"></p>
       <button type="submit" class="h-[52px] rounded-[10px] bg-ink hover:bg-black text-white font-bold cursor-pointer transition-colors">Запросить подбор</button>
     </form>
   </div>
@@ -498,16 +504,16 @@ tailwind.config = {
       </div>
     </div>
 
-    <div class="mt-14 pt-10 border-t border-edge grid md:grid-cols-3 gap-4">
+    <div class="mt-14 pt-10 border-t border-edge grid md:grid-cols-2 xl:grid-cols-3 gap-4">
       <div class="rounded-2xl border border-[#3A3F46] p-5 flex gap-4 items-start">
-        <div class="w-20 h-24 shrink-0 rounded-lg border border-dashed border-[#5A6068] flex items-center justify-center text-center text-[11px] leading-tight text-[#AEB3BA]">[Скан<br>лицензии]</div>
+        <div class="w-20 h-24 shrink-0 rounded-lg border border-dashed border-[#5A6068] flex items-center justify-center text-center text-xs leading-tight text-[#AEB3BA]">[Скан<br>лицензии]</div>
         <div><div class="font-extrabold">Лицензия на проектирование</div><div class="text-sm leading-snug text-[#AEB3BA] mt-1.5">Вентиляция и кондиционирование, отопление и теплоснабжение, автоматизация инженерных систем</div></div>
       </div>
       <div class="rounded-2xl border border-[#3A3F46] p-5 flex gap-4 items-start">
-        <div class="w-20 h-24 shrink-0 rounded-lg border border-dashed border-[#5A6068] flex items-center justify-center text-center text-[11px] leading-tight text-[#AEB3BA]">[Скан<br>лицензии]</div>
+        <div class="w-20 h-24 shrink-0 rounded-lg border border-dashed border-[#5A6068] flex items-center justify-center text-center text-xs leading-tight text-[#AEB3BA]">[Скан<br>лицензии]</div>
         <div><div class="font-extrabold">Лицензия на СМР</div><div class="text-sm leading-snug text-[#AEB3BA] mt-1.5">Подбор и поставка оборудования, монтаж и пусконаладка, сервис, ремонт и модернизация</div></div>
       </div>
-      <div class="rounded-2xl bg-brand p-5 flex gap-4 items-center">
+      <div class="md:col-span-2 xl:col-span-1 rounded-2xl bg-brand p-5 flex gap-4 items-center">
         <span class="w-12 h-12 shrink-0 rounded-xl bg-white/15 inline-flex items-center justify-center"><i data-lucide="badge-check"></i></span>
         <div><div class="text-lg font-extrabold">Гарантия 12 месяцев</div><div class="text-sm leading-snug text-white/85 mt-1">на всё оборудование и материалы — с момента ввода в эксплуатацию</div></div>
       </div>
@@ -560,8 +566,8 @@ tailwind.config = {
       <h2 class="h2 m-0 mb-5 text-ink">Расскажите о вашем объекте — подготовим решение и смету</h2>
       <p class="m-0 mb-8 text-base leading-relaxed text-muted">Перезвоним в рабочее время, уточним задачу и согласуем выезд инженера.</p>
       <ul class="m-0 p-0 list-none flex flex-col gap-4 text-[15px]">
-        <li class="flex items-center gap-3"><span class="w-10 h-10 rounded-[10px] bg-white border border-line text-brand inline-flex items-center justify-center"><i data-lucide="phone" class="ico-sm"></i></span><a href="tel:+70000000000" class="text-xl font-extrabold text-ink hover:text-brand">[+7 ТЕЛЕФОН]</a></li>
-        <li class="flex items-center gap-3"><span class="w-10 h-10 rounded-[10px] bg-white border border-line text-brand inline-flex items-center justify-center"><i data-lucide="mail" class="ico-sm"></i></span><a href="mailto:info@example.kz" class="font-semibold text-brand hover:text-brand-dark">[E-MAIL]</a></li>
+        <li class="flex items-center gap-3"><span class="w-10 h-10 rounded-[10px] bg-white border border-line text-brand inline-flex items-center justify-center"><i data-lucide="phone" class="ico-sm"></i></span><a href="tel:+70000000000" class="py-1.5 text-xl font-extrabold text-ink hover:text-brand">[+7 ТЕЛЕФОН]</a></li>
+        <li class="flex items-center gap-3"><span class="w-10 h-10 rounded-[10px] bg-white border border-line text-brand inline-flex items-center justify-center"><i data-lucide="mail" class="ico-sm"></i></span><a href="mailto:info@example.kz" class="py-2 font-semibold text-brand hover:text-brand-dark">[E-MAIL]</a></li>
         <li class="flex items-center gap-3"><span class="w-10 h-10 rounded-[10px] bg-white border border-line text-brand inline-flex items-center justify-center"><i data-lucide="map-pin" class="ico-sm"></i></span>[АДРЕС ОФИСА], Караганда</li>
         <li class="flex items-center gap-3"><span class="w-10 h-10 rounded-[10px] bg-white border border-line text-brand inline-flex items-center justify-center"><i data-lucide="clock" class="ico-sm"></i></span>[РЕЖИМ РАБОТЫ]</li>
       </ul>
@@ -586,9 +592,10 @@ tailwind.config = {
         <i data-lucide="paperclip" class="ico-sm"></i><span id="file-label">Прикрепить проект или ТЗ (до 10 МБ)</span>
         <input id="file-input" type="file" class="absolute w-px h-px opacity-0">
       </label>
-      <label class="sm:col-span-2 flex items-start gap-2.5 text-[13px] leading-normal text-muted cursor-pointer">
-        <input type="checkbox" checked required class="w-[18px] h-[18px] mt-0.5 accent-brand shrink-0">Согласен на обработку персональных данных в соответствии с политикой конфиденциальности
+      <label class="sm:col-span-2 flex items-start gap-2.5 text-sm leading-normal text-muted cursor-pointer">
+        <input type="checkbox" required class="w-[18px] h-[18px] mt-0.5 accent-brand shrink-0">Согласен на обработку персональных данных в соответствии с политикой конфиденциальности
       </label>
+      <p class="form-done hidden sm:col-span-2 m-0 text-[15px] font-semibold text-brand" role="status"></p>
       <button type="submit" class="sm:col-span-2 h-14 rounded-xl bg-brand hover:bg-brand-dark text-white font-bold text-[17px] cursor-pointer transition-colors inline-flex items-center justify-center gap-2">Получить расчёт стоимости<i data-lucide="arrow-right" class="ico-sm"></i></button>
     </form>
   </div>
@@ -605,26 +612,26 @@ tailwind.config = {
         <p class="m-0 text-sm leading-relaxed">Проектирование, поставка, монтаж, пусконаладка и сервис систем вентиляции и кондиционирования.</p>
       </div>
       <div>
-        <div class="text-[13px] font-bold text-leaf mb-4">Разделы</div>
-        <nav class="flex flex-col gap-2.5 text-[15px]" aria-label="Разделы сайта">
-          <a href="#services" class="hover:text-white">Услуги</a>
-          <a href="#service" class="hover:text-white">Сервис</a>
-          <a href="#projects" class="hover:text-white">Объекты</a>
-          <a href="#equipment" class="hover:text-white">Оборудование</a>
-          <a href="#about" class="hover:text-white">О компании</a>
+        <div class="text-sm font-bold text-leaf mb-4">Разделы</div>
+        <nav class="flex flex-col text-[15px]" aria-label="Разделы сайта">
+          <a href="#services" class="py-1.5 hover:text-white">Услуги</a>
+          <a href="#service" class="py-1.5 hover:text-white">Сервис</a>
+          <a href="#projects" class="py-1.5 hover:text-white">Объекты</a>
+          <a href="#equipment" class="py-1.5 hover:text-white">Оборудование</a>
+          <a href="#about" class="py-1.5 hover:text-white">О компании</a>
         </nav>
       </div>
       <div>
-        <div class="text-[13px] font-bold text-leaf mb-4">Контакты</div>
+        <div class="text-sm font-bold text-leaf mb-4">Контакты</div>
         <div class="flex flex-col gap-2.5 text-[15px]">
-          <a href="tel:+70000000000" class="text-white font-bold text-lg hover:text-leaf">[+7 ТЕЛЕФОН]</a>
-          <a href="mailto:info@example.kz" class="hover:text-white">[E-MAIL]</a>
+          <a href="tel:+70000000000" class="py-1 text-white font-bold text-lg hover:text-leaf">[+7 ТЕЛЕФОН]</a>
+          <a href="mailto:info@example.kz" class="py-1 hover:text-white">[E-MAIL]</a>
           <span>[АДРЕС ОФИСА], Караганда</span>
           <span>[РЕЖИМ РАБОТЫ]</span>
         </div>
       </div>
       <div>
-        <div class="text-[13px] font-bold text-leaf mb-4">География</div>
+        <div class="text-sm font-bold text-leaf mb-4">География</div>
         <div class="flex flex-col gap-2.5 text-[15px]"><span>Караганда</span><span>Темиртау</span><span>Карагандинская область</span></div>
         <div class="flex gap-2.5 mt-6">
           <a href="#" aria-label="WhatsApp" class="w-11 h-11 rounded-[10px] border border-[#3A3F46] hover:border-leaf inline-flex items-center justify-center transition-colors"><img src="https://cdn.simpleicons.org/whatsapp/8CC152" alt="" width="20" height="20"></a>
@@ -633,16 +640,16 @@ tailwind.config = {
         </div>
       </div>
     </div>
-    <div class="flex flex-wrap justify-between gap-3 pt-6 text-[13px] text-[#8E949C]">
+    <div class="flex flex-wrap justify-between gap-3 pt-6 text-sm text-[#8E949C]">
       <span>© 2026 ТОО «Империя Воздуха» · [БИН / РЕКВИЗИТЫ]</span>
-      <a href="#" class="text-[#AEB3BA] hover:text-white">Политика конфиденциальности</a>
+      <a href="#" class="py-1 text-[#AEB3BA] hover:text-white">Политика конфиденциальности</a>
     </div>
   </div>
 </footer>
 
 <script src="https://unpkg.com/lucide@0.469.0/dist/umd/lucide.min.js"></script>
 <script>
-  lucide.createIcons();
+  lucide.createIcons({ attrs: { 'aria-hidden': 'true' } });
 
   // Мобильное меню
   const burger = document.getElementById('burger');
@@ -650,6 +657,9 @@ tailwind.config = {
   burger.addEventListener('click', () => {
     const open = mobileNav.classList.toggle('hidden') === false;
     burger.setAttribute('aria-expanded', String(open));
+  });
+  document.addEventListener('keydown', e => {
+    if (e.key === 'Escape' && !mobileNav.classList.contains('hidden')) { mobileNav.classList.add('hidden'); burger.setAttribute('aria-expanded', 'false'); burger.focus(); }
   });
   mobileNav.querySelectorAll('a').forEach(a => a.addEventListener('click', () => {
     mobileNav.classList.add('hidden');
@@ -662,20 +672,31 @@ tailwind.config = {
   const pad = n => String(n).padStart(2, '0');
   let current = 0;
   document.getElementById('slide-total').textContent = pad(slides.length);
-  slider.querySelectorAll('[data-dir]').forEach(btn => btn.addEventListener('click', () => {
+  const go = dir => {
     slides[current].classList.remove('is-active');
-    current = (current + Number(btn.dataset.dir) + slides.length) % slides.length;
+    current = (current + dir + slides.length) % slides.length;
     slides[current].classList.add('is-active');
+    slides.forEach((s, i) => s.setAttribute('aria-hidden', String(i !== current)));
     document.getElementById('slide-num').textContent = pad(current + 1);
     document.getElementById('slide-caption').textContent = slides[current].dataset.caption;
-  }));
+  };
+  slides.forEach((s, i) => s.setAttribute('aria-hidden', String(i !== 0)));
+  slider.querySelectorAll('[data-dir]').forEach(btn => btn.addEventListener('click', () => go(Number(btn.dataset.dir))));
+  let touchX = null;
+  slider.addEventListener('touchstart', e => { touchX = e.touches[0].clientX; }, { passive: true });
+  slider.addEventListener('touchend', e => {
+    if (touchX === null) return;
+    const dx = e.changedTouches[0].clientX - touchX;
+    if (Math.abs(dx) > 40) go(dx < 0 ? 1 : -1);
+    touchX = null;
+  });
 
   // Фильтр объектов
   const filterBtns = document.querySelectorAll('#filters [data-filter]');
   const projectCards = document.querySelectorAll('#projects-grid [data-cat]');
   const paintFilters = () => filterBtns.forEach(b => {
     const on = b.getAttribute('aria-pressed') === 'true';
-    b.className = 'px-4 py-2 rounded-full text-sm font-semibold border cursor-pointer transition-colors ' +
+    b.className = 'min-h-11 px-4 rounded-full text-sm font-semibold border cursor-pointer transition-colors ' +
       (on ? 'bg-ink text-white border-ink' : 'bg-white text-body border-[#D5D8DC] hover:border-ink');
   });
   filterBtns.forEach(btn => btn.addEventListener('click', () => {
@@ -691,8 +712,21 @@ tailwind.config = {
     document.getElementById('file-label').textContent = f ? f.name : 'Прикрепить проект или ТЗ (до 10 МБ)';
   });
 
-  // Формы — макет, отправка не подключена
-  document.querySelectorAll('.js-form').forEach(f => f.addEventListener('submit', e => e.preventDefault()));
+  // Формы — макет: показываем состояние отправки, реальная отправка подключается на сайте
+  document.querySelectorAll('.js-form').forEach(f => f.addEventListener('submit', e => {
+    e.preventDefault();
+    const btn = f.querySelector('[type=submit]');
+    const done = f.querySelector('.form-done');
+    btn.disabled = true;
+    btn.classList.add('opacity-70', 'cursor-wait');
+    setTimeout(() => {
+      btn.disabled = false;
+      btn.classList.remove('opacity-70', 'cursor-wait');
+      done.textContent = 'Спасибо! Заявка принята — перезвоним в рабочее время.';
+      done.classList.remove('hidden');
+      f.reset();
+    }, 700);
+  }));
 </script>
 </body>
 </html>
